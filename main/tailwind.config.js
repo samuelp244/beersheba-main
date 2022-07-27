@@ -5,7 +5,13 @@ module.exports = {
     './public/index.html'
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xs: "540px"
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    
+  ],
 }
