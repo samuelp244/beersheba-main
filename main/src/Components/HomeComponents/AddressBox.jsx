@@ -2,7 +2,7 @@ import React from 'react'
 import churhDetails from "../../assets/churchParams.json"
 const AddressBox = () => {
   return (
-    <div className=" rounded shadow-lg p-3 grid gap-3">
+    <div className=" rounded-lg shadow-lg p-3 grid gap-3">
         <div className='flex justify-start'>
             <h4 className='border-bottom font-bold text-xl ' >Address</h4>
         </div>

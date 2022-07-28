@@ -4,6 +4,7 @@ import BeershebaCarousel from '../Components/HomeComponents/Carousel'
 import Footer from '../Components/HomeComponents/Footer'
 import Navbar from '../Components/HomeComponents/Navbar'
 import TimingsBox from '../Components/HomeComponents/TimingsBox'
+import AllPlaylistBox from '../Components/YTComponents/AllPlaylistBox'
 import MiniMeetingsBox from '../Components/YTComponents/miniMeetingsBox'
 import RecentPlaylist from '../Components/YTComponents/recentPlaylist'
 
@@ -23,8 +24,9 @@ const Main = () => {
                 <AddressBox/>
                 <TimingsBox/>
             </div>
-            <div className='xl:col-span-2'>
+            <div className='grid gap-4 xl:col-span-2'>
                 <RecentPlaylist />
+                <AllPlaylistBox />
             </div>
             {/* right column */}
             <div className=''>

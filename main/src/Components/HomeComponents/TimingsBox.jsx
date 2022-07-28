@@ -2,7 +2,7 @@ import React from 'react'
 
 const TimingsBox = () => {
   return (
-        <div className="rounded shadow-lg p-3 grid gap-3">
+        <div className="rounded-lg shadow-lg p-3 grid gap-3">
             <div className=''>
                 <h4 className='border-bottom font-bold text-xl ' >Timings</h4>
             </div>
