@@ -20,7 +20,7 @@ const Main = () => {
         <div className='grid place-content-center gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 '>
           {/* left column */}
           {/* grid sm:grid-cols-2 lg:col-span-2 xl:col-span-3 */}
-            <div className='grid gap-4 md:w-'>
+            <div className='grid gap-4'>
                 <AddressBox/>
                 <TimingsBox/>
             </div>
@@ -30,9 +30,7 @@ const Main = () => {
             </div>
             {/* right column */}
             <div className=''>
-                <div>
-                  <MiniMeetingsBox />
-                </div>
+                <MiniMeetingsBox />
                 <div>
 
                 </div>

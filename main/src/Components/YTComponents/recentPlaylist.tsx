@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import getAllPlaylistData from '../../api/getAllPlaylistData'
 import getPlaylistItems from '../../api/getPlaylistItems';
+import { PlaylistItem } from '../../types/interfacesAndTypes';
 // import { ImPlus } from "react-icons/im";
 const RecentPlaylist = () => {
-    const [recentPlaylist,setRecentPlaylist] = useState({});
-    const [playlistItems,setPlaylistItems] = useState([]);
+    const [recentPlaylist,setRecentPlaylist] = useState<PlaylistItem>();
+    const [playlistItems,setPlaylistItems] = useState<PlaylistItem[]>([]);
     useEffect(()=>{
         getAllPlaylistData().then(res=>{
             
@@ -31,7 +32,7 @@ const RecentPlaylist = () => {
             <div className='grid grid-cols-2 gap-4'>
                 {
                     playlistItems.map(i=>{
-                        const {id, snippet={}} = i;
+                        const {id, snippet} = i;
                         const {title, resourceId} = snippet;
                         return (
                             <div className='' key={id}>

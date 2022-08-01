@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { getrecentList } from '../../api/getRecentVideosYT'
+import { PlaylistItem } from '../../types/interfacesAndTypes'
 
 const RecentVideosList = () => {
-    const [data,setdata] = useState([])
-    const [nextPageid,setNextPageId] = useState(null)
-    const [prevPageid,setPrevPageId] = useState(null)
+    const [data,setdata] = useState<PlaylistItem[]>([])
+    const [nextPageid,setNextPageId] = useState<string|null>(null)
+    const [prevPageid,setPrevPageId] = useState<string|null>(null)
     const [totalResults,setTotalResults] = useState(0);
     const [fromResults,setFromResults] = useState(1);
     const [toResults,setToResults] = useState(30);
@@ -17,7 +18,7 @@ const RecentVideosList = () => {
             prevButtonToken:null
         }
         getrecentList(params).then(res=>{
-            // console.log(res)
+            console.log(res)
             setNextPageId(res.nextPageToken)
             setdata(res.items);
             setTotalResults(res.pageInfo.totalResults)
@@ -123,14 +124,14 @@ const RecentVideosList = () => {
     // console.log(data)
     return (
         
-        <div className='  border shadow py-3  bg-white'>
+        <div className='  '>
             <div className=' px-3'>
                 <p>Results {fromResults} - {toResults} of {totalResults}</p>
             </div>
             <ul >
             {
-                data.map(item=>{
-                    const { id, snippet = {}} = item;
+                data?.map(item=>{
+                    const { id, snippet} = item;
                     const {title, resourceId} = snippet;
                     return (
                         <div className=" border px-3 pb-2 " key={id} >

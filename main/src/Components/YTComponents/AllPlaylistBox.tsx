@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import getAllPlaylistData from '../../api/getAllPlaylistData';
+import { PlaylistData } from '../../types/interfacesAndTypes';
 
 const AllPlaylistBox = () => {
-    const [AllPlaylistData,setAllPlaylistData] = useState([]);
+    const [AllPlaylistData,setAllPlaylistData] = useState<PlaylistData[]>([]);
 
     useEffect(()=>{
         getAllPlaylistData().then(res=>{
@@ -19,7 +20,7 @@ const AllPlaylistBox = () => {
             <div className='grid grid-cols-2 gap-4'>
                 {
                     AllPlaylistData.map(item=>{
-                        const {id, snippet={}} = item;
+                        const {id, snippet} = item;
                         const {title} = snippet;
                         return (
                             <div className='' key={id}>
