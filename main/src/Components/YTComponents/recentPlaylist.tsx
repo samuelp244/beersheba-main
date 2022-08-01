@@ -8,16 +8,20 @@ const RecentPlaylist = () => {
     const [playlistItems,setPlaylistItems] = useState<PlaylistItem[]>([]);
     useEffect(()=>{
         getAllPlaylistData().then(res=>{
-            
-            setRecentPlaylist(res[0]);
-            
-            getPlaylistItems(res[0].id).then(res=>{
+            console.log(res)
+            setRecentPlaylist(res.items[0]);
+            // if (recentPlaylist!==undefined){
+            //     // getPlaylistItems(recentPlaylist?.id).then(res=>{
+            //     //     setPlaylistItems(res.items.slice(0,6));
+            //     //     // console.log(res)
+            //     // })
+            // }
+            getPlaylistItems(res.items[0].id).then(res=>{
+                console.log(res)
                 setPlaylistItems(res.items.slice(0,6));
                 // console.log(res)
             })
         })
-        
-        
     },[])
     
     // https://www.youtube.com/playlist?list=

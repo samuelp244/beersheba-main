@@ -4,7 +4,7 @@ const API = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&ch
 const getAllPlaylistData = async () =>{
     const res = await fetch(API);
     const data = await res.json();
-    return data.items
+    return data
 }
 
 

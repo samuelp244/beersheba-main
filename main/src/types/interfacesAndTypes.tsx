@@ -1,3 +1,5 @@
+import { SelectChangeEvent } from "@mui/material"
+
 export interface RecentVideosParams{
     nextButtonToken:string|null,
     prevButtonToken:string|null
@@ -79,4 +81,9 @@ export interface MeetingsFilterProps{
     sermonType:string[],
     setMeetingsDisplay:React.Dispatch<React.SetStateAction<string>>,
     meetingsDisplay:string
-  }
+}
+
+export interface filterButtonProps{
+    meetingsDisplay:string,
+    handleChange:(event:SelectChangeEvent)=>void
+}
