@@ -8,14 +8,30 @@ const SeriesList = () => {
     const [playlistItems,setPlaylistItems] = useState<PlaylistItem[]>([])
     
     useEffect(()=>{
-        getAllPlaylistData().then(res=>{
-            setTotalPlaylists(res.pageInfo.totalResults)
-            setPlaylistItems(res.items);
-        })
+        let isMounted = true;
+        const controller = new AbortController();
+        const getPlaylists = async()=>{
+            try{
+                const res = await getAllPlaylistData()
+                isMounted && setTotalPlaylists(res.pageInfo.totalResults)
+                isMounted && setPlaylistItems(res.items);
+            } catch (err){
+                console.error(err);
+            }
+        }
+        getPlaylists();
+        return ()=>{
+            isMounted = false;
+            controller.abort();
+        }
+        // getAllPlaylistData().then(res=>{
+        //     setTotalPlaylists(res.pageInfo.totalResults)
+        //     setPlaylistItems(res.items);
+        // })
     },[])
 
     return (
-        <div className='  '>
+        <>
                 <div className=' px-3'>
                     <p>Results 1 - {totalPlaylists} of {totalPlaylists}</p>
                 </div>
@@ -26,19 +42,18 @@ const SeriesList = () => {
                         const {title} = snippet;
                         return (
                             <div className=' border-b px-4 pb-3' key={id}>
-                                {/* <a href={`https://www.youtube.com/playlist?list=${id}`} target="_blank" rel="noopener noreferrer" >
-                                    <p className=' '>{title}</p>
-
-                                </a> */}
-                                <Link to={`/series/${id}`} target="_blank" rel="noopener noreferrer">
-                                    <p className=' '>{title}</p>
-                                </Link>
+                                <div className=''>
+                                    <Link to={`/series/${id}`}>
+                                        <p className=' '>{title}</p>
+                                    </Link>
+                                </div>
                             </div>
                         )
                     })
                 }
                 </ul>
-        </div>
+                <div className="clearfix"></div>
+        </>
     )
 }
 

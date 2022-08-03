@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import getAllPlaylistData from '../../api/getAllPlaylistData'
 import getPlaylistItems from '../../api/getPlaylistItems';
 import { PlaylistItem } from '../../types/interfacesAndTypes';
@@ -6,6 +7,7 @@ import { PlaylistItem } from '../../types/interfacesAndTypes';
 const RecentPlaylist = () => {
     const [recentPlaylist,setRecentPlaylist] = useState<PlaylistItem>();
     const [playlistItems,setPlaylistItems] = useState<PlaylistItem[]>([]);
+
     useEffect(()=>{
         getAllPlaylistData().then(res=>{
             console.log(res)
@@ -23,7 +25,7 @@ const RecentPlaylist = () => {
             })
         })
     },[])
-    
+    console.log(playlistItems)
     // https://www.youtube.com/playlist?list=
     // console.log(recentPlaylist)
   return (
@@ -51,7 +53,7 @@ const RecentPlaylist = () => {
             
         </div>
         <div className='flex justify-end'>
-                <button className='text-sm font-semibold font-sans border-gray-400 border-2'>More</button>
+                <Link to={`/series/${recentPlaylist?.id}`}><button className='text-sm font-semibold font-sans border-gray-400 border-2'>More</button></Link>
             </div>
     </div>
   )

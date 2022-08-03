@@ -124,7 +124,7 @@ const RecentVideosList = () => {
     // console.log(data)
     return (
         
-        <div className='  '>
+        <>
             <div className=' px-3'>
                 <p>Results {fromResults} - {toResults} of {totalResults}</p>
             </div>
@@ -137,7 +137,7 @@ const RecentVideosList = () => {
                         <div className=" border px-3 pb-2 " key={id} >
                             <div className='' >
                                 <p className='mb-0 py-3'>{title}</p>
-                                <a href={`http://www.youtube.com/watch?v=${resourceId.videoId}`} target="_blank" rel="noopener noreferrer"><button className=' watch-btn btn btn-sm btn-outline-dark mx' >watch</button></a>
+                                <a href={`/meetings/${resourceId.videoId}`} target="_blank" rel="noopener noreferrer"><button className=' watch-btn btn btn-sm btn-outline-dark mx' >watch</button></a>
                                 
                             </div>
                             
@@ -152,7 +152,7 @@ const RecentVideosList = () => {
                 {showNext ? <button className="btn btn-primary float-end" type="button" onClick={()=>{nextButtonHandler()}}>Next</button> :null}
             </div>
             <div className="clearfix"></div>
-        </div>
+        </>
     );
 }
 
