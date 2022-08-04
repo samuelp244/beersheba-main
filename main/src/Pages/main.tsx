@@ -1,8 +1,10 @@
 import React from 'react'
+import AboutBox from '../Components/HomeComponents/AboutBox'
 import AddressBox from '../Components/HomeComponents/AddressBox'
 import BeershebaCarousel from '../Components/HomeComponents/Carousel'
 import Footer from '../Components/HomeComponents/Footer'
 import Navbar from '../Components/HomeComponents/Navbar'
+import PrayerReqBox from '../Components/HomeComponents/PrayerReqBox'
 import TimingsBox from '../Components/HomeComponents/TimingsBox'
 import AllPlaylistBox from '../Components/YTComponents/AllPlaylistBox'
 import MiniMeetingsBox from '../Components/YTComponents/miniMeetingsBox'
@@ -18,24 +20,35 @@ const Main = () => {
             <BeershebaCarousel/>
           </div>
           
-          <div className='grid place-content-center gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 '>
+          <div className='grid place-content-center gap-4 md:grid-cols-3  lg:grid-cols-4 '>
             {/* left column */}
-            {/* grid sm:grid-cols-2 lg:col-span-2 xl:col-span-3 */}
-              <div className='grid gap-4'>
+            <div className='grid gap-4 md:col-span-3 md:grid-cols-3'>
+            <div className='grid gap-4 md:col-span-1'>
                   <AddressBox/>
                   <TimingsBox/>
               </div>
-              <div className='grid gap-4 xl:col-span-2'>
-                  <RecentPlaylist />
-                  <AllPlaylistBox />
-              </div>
-              {/* right column */}
-              <div className=''>
-                  <MiniMeetingsBox />
+              <div className='grid gap-4 md:col-span-2'>
+                  <div className=''>
+                      <RecentPlaylist />
+                  </div>
                   <div>
-
+                      <AllPlaylistBox />
                   </div>
               </div>
+              <div className='grid md:col-span-3'>
+                <AboutBox/>
+              </div>
+            </div>
+             
+              {/* right column */}
+            <div className=''>
+                <div className='mb-4'>
+                    <MiniMeetingsBox />
+                </div>
+                <div>
+                    <PrayerReqBox/>
+                </div>
+            </div>
           </div>
         </main>
       <Footer />

@@ -65,7 +65,7 @@ const MiniMeetingsBox = () => {
     },[])
 
   return (
-    <div className='container shadow-2xl '>
+    <div className='container rounded-lg shadow-lg'>
         <nav className='pt-2'>
             <div className="nav nav-tabs flex justify-between" id="nav-tab" role="tablist">
                 <button className="nav-link active px-2 xl:px-3" id="nav-recent-tab" data-bs-toggle="tab" data-bs-target="#nav-recent" type="button" role="tab" aria-controls="nav-recent" aria-selected="true">Recent</button>
@@ -74,7 +74,7 @@ const MiniMeetingsBox = () => {
 
             </div>
         </nav>
-            <div className="tab-content pb-2" id="nav-tabContent">
+            <div className="tab-content pb-3" id="nav-tabContent">
                 <div className="tab-pane fade show active " id="nav-recent" role="tabpanel" aria-labelledby="nav-recent-tab" tabIndex={0}>
                     <h5 className='py-2 font-bold' >Recent Meetings</h5>
                     <ul className='flex flex-col'>

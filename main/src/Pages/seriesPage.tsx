@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import getPlaylistItems from '../api/getPlaylistItems'
 import Footer from '../Components/HomeComponents/Footer'
 import Navbar from '../Components/HomeComponents/Navbar'
 import YoutubeEmbed from '../Components/YTComponents/YoutubeEmbed'
 import { PlaylistItem } from '../types/interfacesAndTypes'
 
+type LocationState = {
+  state:{
+      id: string;
+  };
+}
+
 const SeriesPage = () => {
   let {playlistId} = useParams()
   // const [CurrentRecentPlaylist,setRecentPlaylist] = useState<PlaylistItem>();
-  
+  const location = useLocation() as unknown as LocationState;
+  const PlaylistVideoId = location?.state?.id 
+  // if(PlaylistVideoId!==undefinne)
   const [playlistItems,setPlaylistItems] = useState<PlaylistItem[]>([]);
-  const [currItemId,setCurrItemId] = useState("");
+  const [currItemId,setCurrItemId] = useState(PlaylistVideoId);
   const [currTitle,setCurrTitle] = useState("")
 
   const setPlayListIdHandler =(e:any,id:string,title:string)=>{
@@ -20,18 +28,18 @@ const SeriesPage = () => {
     setCurrTitle(title)
   }
 
-
   useEffect(()=>{
     if(playlistId!==undefined){
       getPlaylistItems(playlistId).then(res=>{
         console.log(res)
         setPlaylistItems(res.items)
-        setCurrItemId(res.items[0].snippet.resourceId.videoId)
-        setCurrTitle(res.items[0].snippet.title)
+        if(PlaylistVideoId==="undefined") setCurrItemId(res.items[0].snippet.resourceId.videoId)
+        const temmpArray:PlaylistItem[] = res.items.filter((obj:PlaylistItem)=>obj.snippet.resourceId.videoId===currItemId)
+        setCurrTitle(temmpArray[0].snippet.title)
       })
     } 
     window.scrollTo(0, 0);
-  },[playlistId])
+  },[playlistId,PlaylistVideoId,currItemId])
 
   return (
     <div className='grid grid-cols-1 gap-4'>

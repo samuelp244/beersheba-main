@@ -13,7 +13,7 @@ const AddressBox = () => {
         </div>
         <div className='flex justify-center'>
             <a href={churhDetails.filter(x=>x.id===1).map(x=>x.mapsLink)[0]} target="_blank" rel="noopener noreferrer">
-                <button className="text-sm text-blue-500 border-2 rounded-md p-1 border-blue-500">GET DIRECTIONS</button>
+                <button className="text-sm font-semibold text-blue-500 border-2 rounded-md p-1 px-3 border-blue-500 transition duration-400 hover:scale-105">GET DIRECTIONS</button>
             </a>
         </div>
     </div>

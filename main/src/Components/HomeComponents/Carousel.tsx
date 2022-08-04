@@ -7,7 +7,7 @@ const BeershebaCarousel = () => {
     
   return (
     <div className=" carousel-container container-fluid">
-            <div id="carouselExampleIndicators" className="carousel slide shadow-lg p-3 mb-5 bg-white" data-bs-ride="carousel" data-bs-interval="3000">
+            <div id="carouselExampleIndicators" className="carousel slide shadow-lg  mb-5 bg-white" data-bs-ride="carousel" data-bs-interval="3000">
                 <div className="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 import logoImage from "../../assets/Logo.png"
 import { MdCheckBoxOutlineBlank } from "react-icons/md"
+import { Box, Drawer } from '@mui/material'
 const Navbar = () => {
     const [navbarOpened, setNavbarOpened] = useState(false);
     const title = navbarOpened ? 'Close navigation' : 'Open navigation';
@@ -78,8 +79,40 @@ const Navbar = () => {
                   <MdCheckBoxOutlineBlank size={"40px"} color={"white"}/>
                   </div>
                 </>:null}
-              </div>
-            </header>
+        </div>
+      </header>
+      <Drawer
+                anchor={md? 'right':'top'}
+                open={navbarOpened}
+                onClose={() => setNavbarOpened((o:boolean) => !o)}
+                >
+                <Box width={md?'350px':'100wh'} height='100vh' textAlign='center'>
+                    <div className='flex flex-col p-1'>
+                        <div className='flex justify-start'>
+                            <div className='p-2'>
+                                <Burger
+                                    opened={navbarOpened}
+                                    onClick={() => setNavbarOpened((o:boolean) => !o)}
+                                    title={title}
+                                />
+                            </div>
+                        </div>
+                        <div className='flex justify-center'>
+                            <main className=' flex flex-col text-start gap-8'>
+                                <div className='flex flex-col text-lg gap-5'>
+                                    <div>
+                                        <Link to="/"><p>Dashboard</p></Link>
+                                    </div>
+
+                                    
+                                    
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                    
+                </Box>
+            </Drawer>
     </div>
   )
 }
