@@ -21,13 +21,13 @@ const PrayerReqBox = () => {
     console.log(PrayerDetails)
   }
   return (
-    <div className='rounded-lg shadow-lg grid gap-3  p-2 py-3'>
-      <div className='flex justify-center'>
+    <div className='rounded-lg shadow-lg grid gap-3  p-2 py-3 bg-white'>
+      <div className='flex justify-start'>
         <p className='text-lg font-semibold'>Prayer Request</p>
       </div>
       <div className="grid grid-cols-3 gap-2 px-2">
         <input type="text" name="full_name" value={PrayerDetails.full_name} onChange={handleChange} className=' col-span-2 rounded-md p-1 px-2 border' placeholder='Full Name' />
-        <button className='col-span-1 text-sm font-semibold text-blue-500 border-2 rounded-md  border-blue-500' onClick={()=>{setPrayerModalOpened(true)}}>Submit</button>
+        <button className='text-sm font-medium text-white bg-blue-500  rounded-md p-1 px-3  transition duration-500 hover:scale-105 ' onClick={()=>{setPrayerModalOpened(true)}}>Submit</button>
       </div>
         <Modal
             opened={prayerModalOpened}
@@ -39,23 +39,23 @@ const PrayerReqBox = () => {
             >
             <div className='grid gap-3'>
               <div className='grid grid-cols-1'>
-                <label className=' text-sm mb-1'>Full Name</label>
+                <label className=' text-sm font-medium mb-1'>Full Name</label>
                 <input type="text" name="full_name" value={PrayerDetails.full_name} onChange={handleChange} className='border rounded-md px-1'/>
               </div>
               <div className='grid grid-cols-1'>
-                  <label className=' text-sm mb-1'>Email</label>
+                  <label className=' text-sm font-medium mb-1'>Email</label>
                   <input type="text" name="email" value={PrayerDetails.email} onChange={handleChange} className='border rounded-md px-1'/>
               </div>
               <div className='grid grid-cols-1'>
-                  <label className=' text-sm mb-1'>Mobile</label>
+                  <label className=' text-sm font-medium mb-1'>Mobile</label>
                   <input type="text" name="mobile" value={PrayerDetails.mobile} onChange={handleChange} className='border rounded-md px-1'/>
               </div>
               <div className='grid grid-cols-1'>
-                  <label className=' text-sm mb-1'>Message Subject</label>
+                  <label className=' text-sm font-medium mb-1'>Message Subject</label>
                   <input type="text" name="message_subject" value={PrayerDetails.message_subject} onChange={handleChange} className='border rounded-md px-1'/>
               </div>
               <div className='grid grid-cols-1'>
-                  <label className=' text-sm mb-1'>Message</label>
+                  <label className=' text-sm font-medium mb-1'>Message</label>
                   <textarea  name="message" value={PrayerDetails.message} onChange={handleChange} className='border rounded-md px-1 h-28'></textarea>
               </div>
               <div className='flex justify-end'>

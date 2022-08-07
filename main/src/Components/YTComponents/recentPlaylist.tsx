@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import getAllPlaylistData from '../../api/getAllPlaylistData'
 import getPlaylistItems from '../../api/getPlaylistItems';
 import { PlaylistItem } from '../../types/interfacesAndTypes';
+import {IoIosArrowDropright} from "react-icons/io"
 // import { ImPlus } from "react-icons/im";
 const RecentPlaylist = () => {
     const [recentPlaylist,setRecentPlaylist] = useState<PlaylistItem>();
@@ -40,12 +41,12 @@ const RecentPlaylist = () => {
     }
 
   return (
-    <div className=' rounded-lg shadow-lg p-3 grid gap-3'>
+    <div className=' rounded-lg shadow-lg pt-3 pb-2 px-3 grid gap-3 bg-white'>
         <div>
-            <h1 className='text-lg font-semibold'>Recent Sermon</h1>
+            <h1 className='text-lg font-bold'>Recent Sermon</h1>
         </div>
         <div >
-            <h1 className='text-xl mb-4 font-bold'>{recentPlaylist?.snippet?.title}</h1>
+            <h1 className='text-xl mb-4 font-medium '>{recentPlaylist?.snippet?.title}</h1>
             <div className='grid grid-cols-2 gap-3'>
                 {
                     playlistItems.map(i=>{
@@ -54,7 +55,7 @@ const RecentPlaylist = () => {
                         return (
                             <div className='' key={id}>
                                 <a href="/#" onClick={(e)=>navigateToSeriesPage(e,resourceId.videoId)} target="_blank" rel="noopener noreferrer" >
-                                    <p className=' truncate'>{title}</p>
+                                    <p className=' truncate '>{title}</p>
                                 </a>
                             </div>
                         );
@@ -63,8 +64,11 @@ const RecentPlaylist = () => {
             </div>
             
         </div>
+        {/* <div className='flex justify-end'>
+                <Link to={`/series/${recentPlaylist?.id}`}><button className='text-sm font-semibold font-sans border-blue-500 text-blue-500 px-2  border-2 rounded-md'>More</button></Link>
+        </div> */}
         <div className='flex justify-end'>
-                <Link to={`/series/${recentPlaylist?.id}`}><button className='text-sm font-semibold font-sans border-gray-400 p-1  px-2 border-2'>More</button></Link>
+            <Link to={`/series/${recentPlaylist?.id}`}><IoIosArrowDropright size={"30px"} color={"rgb(59 130 246)"} /> </Link>
         </div>
     </div>
   )

@@ -11,7 +11,8 @@ const RecentVideosList = () => {
     const [toResults,setToResults] = useState(30);
 
     const [showPrev,setShowPrev] = useState(false);
-    const [showNext, setShowNext] = useState(true)
+    const [showNext, setShowNext] = useState(true);
+    
     useEffect(()=>{
         const params = {
             nextButtonToken:null,
@@ -124,17 +125,17 @@ const RecentVideosList = () => {
     // console.log(data)
     return (
         
-        <>
+        <div className=' p-3 rounded-[10px]  grid gap-3 bg-white'>
             <div className=' px-3'>
-                <p>Results {fromResults} - {toResults} of {totalResults}</p>
+                <p className=' text-sm  '>Results {fromResults} - {toResults} of {totalResults}</p>
             </div>
-            <ul >
+            <ul className='  border-slate-100 rounded-[10px] divide-y'>
             {
                 data?.map(item=>{
                     const { id, snippet} = item;
                     const {title, resourceId} = snippet;
                     return (
-                        <div className=" border px-3 pb-2 " key={id} >
+                        <div className="   px-3 pb-2 " key={id} >
                             <div className='' >
                                 <a href={`/meetings/${resourceId.videoId}`} target="_blank" rel="noopener noreferrer"><p className='mb-0 py-3'>{title}</p></a>
                                 {/* <a href={`/meetings/${resourceId.videoId}`} target="_blank" rel="noopener noreferrer"><button className=' watch-btn btn btn-sm btn-outline-dark mx' >watch</button></a> */}
@@ -147,12 +148,12 @@ const RecentVideosList = () => {
                 })
             }
             </ul>
-            <div className='mb-3 px-3'>
+            <div className=' px-3'>
                 {showPrev ? <button className="btn btn-primary" type="button" onClick={()=>{prevButtonHandler()}}>Prev</button> :null}
-                {showNext ? <button className="btn btn-primary float-end" type="button" onClick={()=>{nextButtonHandler()}}>Next</button> :null}
+                {showNext ? <button className="border-2 px-2 p-1 font-medium text-sm  text-white bg-blue-500 rounded-md float-end" type="button" onClick={()=>{nextButtonHandler()}}>Next</button> :null}
             </div>
             <div className="clearfix"></div>
-        </>
+        </ div>
     );
 }
 

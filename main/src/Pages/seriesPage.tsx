@@ -44,7 +44,7 @@ const SeriesPage = () => {
   return (
     <div className='grid grid-cols-1 gap-4'>
       <Navbar />
-      <main className='container max-w-md  lg:max-w-6xl md:max-w-4xl  mx-auto '>
+      <main className='container w-11/12  lg:max-w-6xl md:max-w-4xl  mx-auto  '>
           <div className='grid gap-4 lg:grid-cols-4'>
               <div className='lg:col-span-4 '>
                   <p className=' text-xl font-serif'>{currTitle}</p>

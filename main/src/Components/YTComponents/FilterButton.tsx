@@ -9,7 +9,7 @@ const FilterButton = (props:filterButtonProps) => {
   return (
     <FormControl sx={{m:1}}>
         <Select
-        sx={{width: 120,height: 40,border: "1px darkgrey"}}
+        sx={{width: 120,height: 40,border: "1px "}}
         value={props.meetingsDisplay}
         onChange={props.handleChange}
         displayEmpty

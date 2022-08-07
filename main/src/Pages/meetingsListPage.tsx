@@ -35,7 +35,7 @@ const MeetingsListPage = (props:MeetingsListProps) => {
         <div className={isMd?'grid place-content-center gap-4 md:grid-cols-3 lg:grid-cols-7 ':'grid place-content-center gap-4  grid-cols-1 '}>
             
             <div className='grid  gap-4 lg:col-span-5 md:col-span-2' >
-                <div className='border shadow py-3  bg-white '>
+                <div className='border rounded-[10px] shadow-lg pt-3  bg-white '>
                     
                     <div className='mx-4 '>
                         <FilterButton

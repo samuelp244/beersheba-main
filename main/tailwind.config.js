@@ -8,7 +8,12 @@ module.exports = {
     extend: {
       screens: {
         xs: "540px"
-      }
+      },
+      fontFamily: {
+        'montserrat': ['Montserrat'],
+        'lato': ['Lato'],
+        'garamond': ['Garamond']
+    }
     },
   },
   plugins: [

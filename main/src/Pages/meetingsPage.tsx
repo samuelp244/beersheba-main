@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { YOUTUBE_API_KEY } from '../api/getRecentVideosYT'
 import Footer from '../Components/HomeComponents/Footer'
 import Navbar from '../Components/HomeComponents/Navbar'
-import MiniMeetingsBox from '../Components/YTComponents/miniMeetingsBox'
+// import MiniMeetingsBox from '../Components/YTComponents/miniMeetingsBox'
 import YoutubeEmbed from '../Components/YTComponents/YoutubeEmbed'
 import { youtubeSearchType } from '../types/interfacesAndTypes'
 

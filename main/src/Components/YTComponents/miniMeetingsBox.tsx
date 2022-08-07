@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { getrecentList, YOUTUBE_API_KEY } from '../../api/getRecentVideosYT'
-import { PlaylistItem, youtubeSearchType } from '../../types/interfacesAndTypes'
+import { YOUTUBE_API_KEY } from '../../api/getRecentVideosYT'
+import { youtubeSearchType } from '../../types/interfacesAndTypes'
 
 
 const MiniMeetingsBox = () => {
@@ -65,7 +65,7 @@ const MiniMeetingsBox = () => {
     },[])
 
   return (
-    <div className='container rounded-lg shadow-lg'>
+    <div className='container rounded-lg shadow-lg bg-white'>
         <nav className='pt-2'>
             <div className="nav nav-tabs flex justify-between" id="nav-tab" role="tablist">
                 <button className="nav-link active px-2 xl:px-3" id="nav-recent-tab" data-bs-toggle="tab" data-bs-target="#nav-recent" type="button" role="tab" aria-controls="nav-recent" aria-selected="true">Recent</button>

@@ -9,11 +9,14 @@ import TimingsBox from '../Components/HomeComponents/TimingsBox'
 import AllPlaylistBox from '../Components/YTComponents/AllPlaylistBox'
 import MiniMeetingsBox from '../Components/YTComponents/miniMeetingsBox'
 import RecentPlaylist from '../Components/YTComponents/recentPlaylist'
+import useMediaQuery from '../Hooks/useMediaQuery'
 
 const Main = () => {
+  const max_lg = useMediaQuery("(max-width: 1024px)")
   return (
     <>
-    <div className='grid grid-cols-1 gap-4'>
+    {/* #6a9eec */}
+    <div className='grid grid-cols-1 gap-4 bg-[#F9F7F7]'>
       <Navbar />
         <main className='container w-full  lg:max-w-6xl md:max-w-4xl  mx-auto '>
           <div className=''>
@@ -41,7 +44,7 @@ const Main = () => {
             </div>
              
               {/* right column */}
-            <div className=''>
+            <div className={max_lg?'grid md:grid-cols-2 gap-3 md:col-span-3':''}>
                 <div className='mb-4'>
                     <MiniMeetingsBox />
                 </div>

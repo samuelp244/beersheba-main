@@ -7,16 +7,17 @@ import React from "react";
 export default function Footer(){
     const d = new Date();
     let currentYear = d.getFullYear();
-
+    const topColor = "#393E46"
+    const bottomColor = "#222831"
     return (
         <>
-          <div className="container-fluid border shadow-lg">
+          <div className={`border shadow-lg bg-[${topColor}]`}>
 
             <footer className="text-center text-lg-start ">
 
               <div className="container footer-inner p-4 pb-0">
 
-                <section className="">
+                <section className=" text-white">
 
                   <div className="row">
 
@@ -91,8 +92,9 @@ export default function Footer(){
 
                 <hr className="my-3" />
 
-
-                <section className="container-fluid">
+                </div>
+                </footer>
+                <section className={`container-fluid text-white bg-[${bottomColor}]`}>
                   <div className="row d-flex align-items-center">
 
                     <div className="col-md-7 col-lg-8 text-center text-md-start">
@@ -123,9 +125,9 @@ export default function Footer(){
                   </div>
                 </section>
 
-              </div>
+              
 
-            </footer>
+            
 
           </div>
 
