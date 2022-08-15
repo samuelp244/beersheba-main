@@ -1,5 +1,6 @@
-import { Modal } from '@mantine/core'
 import React, { useState } from 'react'
+import { Modal } from '@mantine/core'
+import axios from 'axios'
 
 const PrayerReqBox = () => {
   const [prayerModalOpened,setPrayerModalOpened] = useState(false)
@@ -18,8 +19,18 @@ const PrayerReqBox = () => {
       ...PrayerDetails,
       [target.name]:target.value
     })
-    console.log(PrayerDetails)
   }
+
+  const submitHandler = async (e:any)=>{
+    e.preventDefault();
+    const res = await axios.post('http://localhost:1337/sendPrayerRequest',PrayerDetails)
+    if(res.data.message==="message sent"){
+      setPrayerModalOpened(false)
+    }
+  }
+
+
+
   return (
     <div className='rounded-lg shadow-lg grid gap-3  p-2 py-3 bg-white'>
       <div className='flex justify-start'>
@@ -59,7 +70,7 @@ const PrayerReqBox = () => {
                   <textarea  name="message" value={PrayerDetails.message} onChange={handleChange} className='border rounded-md px-1 h-28'></textarea>
               </div>
               <div className='flex justify-end'>
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-sans font-semibold py-1 px-2 rounded'>Submit</button>
+                <button className='bg-blue-500 hover:bg-blue-700 text-white font-sans font-semibold py-1 px-2 rounded' onClick={(e)=>submitHandler(e)} >Submit</button>
               </div>
             </div>
           </Modal>
