@@ -1,43 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
-import getAllPlaylistData from '../../api/getAllPlaylistData';
-import { PlaylistItem } from '../../types/interfacesAndTypes';
+import { useAllPlaylistsData } from '../../api/queries';
 
 const SeriesList = () => {
-    const [ totalPlaylists,setTotalPlaylists] = useState("");
-    const [playlistItems,setPlaylistItems] = useState<PlaylistItem[]>([])
-    
-    useEffect(()=>{
-        let isMounted = true;
-        const controller = new AbortController();
-        const getPlaylists = async()=>{
-            try{
-                const res = await getAllPlaylistData()
-                isMounted && setTotalPlaylists(res.pageInfo.totalResults)
-                isMounted && setPlaylistItems(res.items);
-            } catch (err){
-                console.error(err);
-            }
-        }
-        getPlaylists();
-        return ()=>{
-            isMounted = false;
-            controller.abort();
-        }
-        // getAllPlaylistData().then(res=>{
-        //     setTotalPlaylists(res.pageInfo.totalResults)
-        //     setPlaylistItems(res.items);
-        // })
-    },[])
+    const { data } = useAllPlaylistsData()
 
     return (
         <>
                 <div className=' px-3'>
-                    <p>Results 1 - {totalPlaylists} of {totalPlaylists}</p>
+                    <p>Results 1 - {data?.pageInfo.totalResults} of {data?.pageInfo.totalResults}</p>
                 </div>
                 <ul className='grid gap-3 pt-3'>
                 {
-                    playlistItems?.map(item=>{
+                    data?.items?.map(item=>{
                         const {id, snippet} = item;
                         const {title} = snippet;
                         return (

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { getrecentList } from '../../api/getRecentVideosYT'
+import { getAllVideosList, YOUTUBE_API_KEY } from '../../api/apiCalls'
+import { useAllVideosList } from '../../api/queries'
+// import { useAllVideosList } from '../../api/queries'
 import { PlaylistItem } from '../../types/interfacesAndTypes'
 
 const RecentVideosList = () => {
-    const [data,setdata] = useState<PlaylistItem[]>([])
+    const [playlistData,setPlaylistData] = useState<PlaylistItem[]>([])
     const [nextPageid,setNextPageId] = useState<string|null>(null)
     const [prevPageid,setPrevPageId] = useState<string|null>(null)
     const [totalResults,setTotalResults] = useState(0);
@@ -12,19 +14,30 @@ const RecentVideosList = () => {
 
     const [showPrev,setShowPrev] = useState(false);
     const [showNext, setShowNext] = useState(true);
-    
+
+    const {data} = useAllVideosList();
+
     useEffect(()=>{
-        const params = {
-            nextButtonToken:null,
-            prevButtonToken:null
-        }
-        getrecentList(params).then(res=>{
-            console.log(res)
-            setNextPageId(res.nextPageToken)
-            setdata(res.items);
-            setTotalResults(res.pageInfo.totalResults)
+        if(data!==undefined){
+            setNextPageId(data.nextPageToken)
+            setPlaylistData(data.items);
+            setTotalResults(data.pageInfo.totalResults)
             setFromResults(1);
             setToResults(30);
+            
+         
+        }
+    },[data])
+    
+    const prevButtonHandler = async ()=>{
+        if(playlistData.length<30){
+            setFromResults(fromResults-30)
+            setToResults(toResults-(totalResults%100))
+            const res = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUjm1A-rBB_6nbP-fuqyIrow&maxResults=30&pageToken=${prevPageid}&key=${YOUTUBE_API_KEY}`)
+            .then(res=>res.json())
+            setNextPageId(res.nextPageToken)
+            setPrevPageId(res.prevPageToken)
+            setPlaylistData(res.items);
             if(res.nextPageToken){
                 setShowNext(true)
             }else{
@@ -35,92 +48,62 @@ const RecentVideosList = () => {
             }else{
                 setShowPrev(false)
             }
-        })
-        
-    },[])
-    const prevButtonHandler=()=>{
-        if(data.length<30){
-            setFromResults(fromResults-30)
-            setToResults(toResults-(totalResults%100))
-            const params={
-                nextButtonToken:null,
-                prevButtonToken:prevPageid
-            }
-            getrecentList(params).then(res=>{
-                setNextPageId(res.nextPageToken)
-                setPrevPageId(res.prevPageToken)
-                setdata(res.items);
-                if(res.nextPageToken){
-                    setShowNext(true)
-                }else{
-                    setShowNext(false)
-                }
-                if(res.prevPageToken){
-                    setShowPrev(true)
-                }else{
-                    setShowPrev(false)
-                }
-            })
+            
             window.scrollTo(0, 0);
         }else{
-            const params={
-                nextButtonToken:null,
-                prevButtonToken:prevPageid
+            const res = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUjm1A-rBB_6nbP-fuqyIrow&maxResults=30&pageToken=${prevPageid}&key=${YOUTUBE_API_KEY}`)
+            .then(res=>res.json())
+            setNextPageId(res.nextPageToken)
+            setPrevPageId(res.prevPageToken)
+            setFromResults(fromResults-30);
+            setToResults(toResults-30)
+            setPlaylistData(res.items);
+            // console.log(res.items)
+            if(res.nextPageToken){
+                setShowNext(true)
+            }else{
+                setShowNext(false)
             }
-            getrecentList(params).then(res=>{
-                setNextPageId(res.nextPageToken)
-                setPrevPageId(res.prevPageToken)
-                setFromResults(fromResults-30);
-                setToResults(toResults-30)
-                setdata(res.items);
-                // console.log(res.items)
-                if(res.nextPageToken){
-                    setShowNext(true)
-                }else{
-                    setShowNext(false)
-                }
-                if(res.prevPageToken){
-                    setShowPrev(true)
-                }else{
-                    setShowPrev(false)
-                }
-            })
+            if(res.prevPageToken){
+                setShowPrev(true)
+            }else{
+                setShowPrev(false)
+            }
+            
             window.scrollTo(0, 0);
         }
         
         
     }
-    const nextButtonHandler=()=>{
-            const params={
-                nextButtonToken:nextPageid,
-                prevButtonToken:null
+    const nextButtonHandler = async ()=>{
+            const res = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUjm1A-rBB_6nbP-fuqyIrow&maxResults=30&pageToken=${nextPageid}&key=${YOUTUBE_API_KEY}`)
+            .then(res=>res.json())
+            console.log(res)
+            if(res.nextPageToken){
+                setNextPageId(res.nextPageToken)
+                setFromResults(fromResults+30)
+                setToResults(toResults+30)
             }
-            getrecentList(params).then(res=>{
-                if(res.nextPageToken){
-                    setNextPageId(res.nextPageToken)
-                    setFromResults(fromResults+30)
-                    setToResults(toResults+30)
-                }
-                setdata(res.items);
-                setPrevPageId(res.prevPageToken)
-                if(res.items.length<30){
-                    setFromResults(toResults+1)
-                    setToResults(totalResults)
-                }
-                if(res.nextPageToken){
-                    setShowNext(true)
-                }else{
-                    setShowNext(false)
-                }
-                if(res.prevPageToken){
-                    setShowPrev(true)
-                }else{
-                    setShowPrev(false)
-                }
-                console.log(res)
-            })
+            setPlaylistData(res.items);
+            setPrevPageId(res.prevPageToken)
+            if(res.items.length<30){
+                setFromResults(toResults+1)
+                setToResults(totalResults)
+            }
+            if(res.nextPageToken){
+                setShowNext(true)
+            }else{
+                setShowNext(false)
+            }
+            if(res.prevPageToken){
+                setShowPrev(true)
+            }else{
+                setShowPrev(false)
+            }
+            console.log(res)
+            
             window.scrollTo(0, 0);
-    }
+        }
 
     // console.log(data)
     return (
@@ -131,7 +114,7 @@ const RecentVideosList = () => {
             </div>
             <ul className='  border-slate-100 rounded-[10px] divide-y'>
             {
-                data?.map(item=>{
+                playlistData?.map(item=>{
                     const { id, snippet} = item;
                     const {title, resourceId} = snippet;
                     return (
@@ -149,8 +132,8 @@ const RecentVideosList = () => {
             }
             </ul>
             <div className=' px-3'>
-                {showPrev ? <button className="btn btn-primary" type="button" onClick={()=>{prevButtonHandler()}}>Prev</button> :null}
-                {showNext ? <button className="border-2 px-2 p-1 font-medium text-sm  text-white bg-blue-500 rounded-md float-end" type="button" onClick={()=>{nextButtonHandler()}}>Next</button> :null}
+                {showPrev ? <button className="border-2 px-2 p-1 font-medium text-sm  text-white bg-blue-500 rounded-md  float-left" type="button" onClick={()=>{prevButtonHandler()}}>Prev</button> :null}
+                {showNext ? <button className="border-2 px-2 p-1 font-medium text-sm  text-white bg-blue-500 rounded-md float-right" type="button" onClick={()=>{nextButtonHandler()}}>Next</button> :null}
             </div>
             <div className="clearfix"></div>
         </ div>

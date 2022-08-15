@@ -7,11 +7,11 @@ import React from "react";
 export default function Footer(){
     const d = new Date();
     let currentYear = d.getFullYear();
-    const topColor = "#393E46"
-    const bottomColor = "#222831"
+    // const topColor = "#393E46"
+    // const bottomColor = "#222831"
     return (
         <>
-          <div className={`border shadow-lg bg-[${topColor}]`}>
+          <div className={`border shadow-lg bg-[#393E46]`}>
 
             <footer className="text-center text-lg-start ">
 
@@ -94,7 +94,7 @@ export default function Footer(){
 
                 </div>
                 </footer>
-                <section className={`container-fluid text-white bg-[${bottomColor}]`}>
+                <section className={`container-fluid text-white bg-[#222831]`}>
                   <div className="row d-flex align-items-center">
 
                     <div className="col-md-7 col-lg-8 text-center text-md-start">

@@ -5,6 +5,18 @@ export interface RecentVideosParams{
     prevButtonToken:string|null
 }
 
+export interface fetchRecentDataType{
+    kind: string,
+    etag: string,
+    nextPageToken: string,
+    regionCode: string,
+    pageInfo:{
+        totalResults: number,
+        resultsPerPage: number
+    },
+    items:youtubeSearchType[]
+}
+
 export interface PlaylistItem{
     kind: string,
     etag: string,
@@ -43,38 +55,38 @@ export interface PlaylistItem{
       }
 }
 
-export interface PlaylistData{
+export interface PlaylistsData{
     kind: string,
     etag: string,
     id: string,
-        snippet: {
-            publishedAt: string,
-            channelId: string,
-            title: string,
-            description: string,
-            thumbnails: {
-                default: {
-                    url: string
-                    width: number,
-                    height: number
-                },
-                medium: {
-                    url: string
-                    width: number,
-                    height: number
-                },
-                high: {
-                    url: string
-                    width: number,
-                    height: number
-                }
+    snippet: {
+        publishedAt: string,
+        channelId: string,
+        title: string,
+        description: string,
+        thumbnails: {
+            default: {
+                url: string
+                width: number,
+                height: number
             },
-            channelTitle: string,
-            localized: {
-            title: string,
-            description: string
+            medium: {
+                url: string
+                width: number,
+                height: number
+            },
+            high: {
+                url: string
+                width: number,
+                height: number
             }
+        },
+        channelTitle: string,
+        localized: {
+        title: string,
+        description: string
         }
+    }
 }
 
 export interface MeetingsFilterProps{

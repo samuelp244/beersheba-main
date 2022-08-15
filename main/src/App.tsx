@@ -12,9 +12,10 @@ import MeetingsPage from './Pages/meetingsPage';
 
 
 function App() {
+
+  
   return (
     <>
-    
         <Router>
           <Routes>
             <Route path='/' element={<Main />}></Route>
@@ -24,7 +25,7 @@ function App() {
             <Route path='/series/:playlistId' element={<SeriesPage/>}></Route>
           </Routes>
         </Router>
-      
+        
     </>
   );
 }
