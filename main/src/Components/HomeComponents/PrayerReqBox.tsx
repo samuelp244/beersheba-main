@@ -23,7 +23,7 @@ const PrayerReqBox = () => {
 
   const submitHandler = async (e:any)=>{
     e.preventDefault();
-    const res = await axios.post('http://localhost:1337/api/v1/sendPrayerRequest',PrayerDetails)
+    const res = await axios.post('/api/v1/sendPrayerRequest',PrayerDetails)
     if(res.data.message==="message sent"){
       setPrayerModalOpened(false)
     }
