@@ -26,6 +26,7 @@ const PrayerReqBox = () => {
     const res = await axios.post('/api/v1/sendPrayerRequest',PrayerDetails)
     if(res.data.message==="message sent"){
       setPrayerModalOpened(false)
+      setPrayerDetails(initialValues)
     }
   }
 

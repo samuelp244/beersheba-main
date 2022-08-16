@@ -18,15 +18,15 @@ const Main = () => {
     {/* #6a9eec */}
     <div className='grid grid-cols-1 gap-4 bg-[#F9F7F7]'>
       <Navbar />
-        <main className='container w-full  lg:max-w-6xl md:max-w-4xl  mx-auto '>
+        <main className=' w-full  lg:max-w-6xl md:max-w-4xl  mx-auto '>
           <div className=''>
             <BeershebaCarousel/>
           </div>
           
-          <div className='grid place-content-center gap-4 md:grid-cols-3  lg:grid-cols-4 '>
+          <div className='grid container place-content-center gap-4 md:grid-cols-3  lg:grid-cols-4 '>
             {/* left column */}
             <div className='grid gap-4 md:col-span-3 md:grid-cols-3'>
-            <div className='grid gap-4 md:col-span-1'>
+              <div className='grid gap-4 md:col-span-1'>
                   <AddressBox/>
                   <TimingsBox/>
               </div>

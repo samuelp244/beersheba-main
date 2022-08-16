@@ -118,7 +118,7 @@ const RecentVideosList = () => {
                     return (
                         <div className="   px-3 pb-2 " key={id} >
                             <div className='' >
-                                <a href={`/meetings/${resourceId.videoId}`} target="_blank" rel="noopener noreferrer"><p className='mb-0 py-3'>{title}</p></a>
+                                <a href={`/meetings/${resourceId.videoId}`}><p className='mb-0 py-3'>{title}</p></a>
                                 {/* <a href={`/meetings/${resourceId.videoId}`} target="_blank" rel="noopener noreferrer"><button className=' watch-btn btn btn-sm btn-outline-dark mx' >watch</button></a> */}
                                 
                             </div>

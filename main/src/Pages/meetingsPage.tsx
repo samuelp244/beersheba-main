@@ -6,6 +6,7 @@ import Footer from '../Components/HomeComponents/Footer'
 import Navbar from '../Components/HomeComponents/Navbar'
 // import MiniMeetingsBox from '../Components/YTComponents/miniMeetingsBox'
 import YoutubeEmbed from '../Components/YTComponents/YoutubeEmbed'
+import useMediaQuery from '../Hooks/useMediaQuery'
 
 const MeetingsPage = () => {
     
@@ -37,19 +38,19 @@ const MeetingsPage = () => {
             controller.abort();
         }
     },[id])
-
+    const Sm = useMediaQuery("(max-width: 550px)")
   return (
     <div className='grid grid-cols-1 gap-4'>
         <Navbar />
-            <main className='container w-full  lg:max-w-6xl md:max-w-4xl  mx-auto '>
+            <main className={Sm?'w-full':'container w-full lg:max-w-6xl md:max-w-4xl mx-auto'}>
                 <div className='grid gap-4 md:grid-cols-3 lg:grid-cols-7'>
-                    <div className='md:col-span-3 lg:col-span-7'>
+                    <div className={Sm?' container md:col-span-3 lg:col-span-7':'md:col-span-3 lg:col-span-7'}>
                         <p className='text-xl font-serif'>{videoTitle}</p>
                     </div>
                     <div className='md:col-span-2 lg:col-span-5'>
                         <YoutubeEmbed embedId={id} />
                     </div>
-                    <div className='md:col-span-1 lg:col-span-2 overflow-y-auto h-[36rem]'>
+                    <div className={Sm?'container w-full md:col-span-1 lg:col-span-2 overflow-y-auto h-[36rem]':' md:col-span-1 lg:col-span-2 overflow-y-auto h-[36rem]'}>
                         {/* <MiniMeetingsBox/> */}
                         {data?.map(item=>{
                             const {id, snippet} = item;

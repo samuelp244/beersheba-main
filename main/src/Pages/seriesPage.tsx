@@ -4,6 +4,7 @@ import { getPlaylistItems } from '../api/apiCalls'
 import Footer from '../Components/HomeComponents/Footer'
 import Navbar from '../Components/HomeComponents/Navbar'
 import YoutubeEmbed from '../Components/YTComponents/YoutubeEmbed'
+import useMediaQuery from '../Hooks/useMediaQuery'
 import { PlaylistItem } from '../types/interfacesAndTypes'
 
 type LocationState = {
@@ -40,20 +41,20 @@ const SeriesPage = () => {
     window.scrollTo(0, 0);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[playlistId])
-
+  const Sm = useMediaQuery("(max-width: 550px)")
   return (
     <div className='grid grid-cols-1 gap-4'>
       <Navbar />
-      <main className='container w-11/12  lg:max-w-6xl md:max-w-4xl  mx-auto  '>
-          <div className='grid gap-4 lg:grid-cols-4'>
-              <div className='lg:col-span-4 '>
+      <main className={Sm?'w-full':'container w-full lg:max-w-6xl md:max-w-4xl mx-auto'}>
+          <div className='grid gap-4 md:grid-cols-3 lg:grid-cols-7'>
+              <div className={Sm?' container md:col-span-3 lg:col-span-7':'md:col-span-3 lg:col-span-7'}>
                   <p className=' text-xl font-serif'>{currTitle}</p>
               </div>
-              <div className='lg:col-span-3'>
+              <div className='md:col-span-2 lg:col-span-5'>
                   
                   <YoutubeEmbed embedId={currItemId} />
               </div>
-              <div className='lg:col-span-1 overflow-y-auto h-[31rem]'>
+              <div className={Sm?'container w-full md:col-span-1 lg:col-span-2 overflow-y-auto h-[31rem]':' md:col-span-1 lg:col-span-2 overflow-y-auto h-[31rem]'}>
                   <div>
                       <p className='p-1 text-xl font-serif'>Meetings in this Series</p>
                   </div>
