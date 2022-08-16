@@ -51,6 +51,6 @@ app.post('/sendPrayerRequest',async (req:Request,res:Response)=>{
 
 })
 
-app.listen(1339,()=>{
+app.listen(1337,()=>{
     console.log('app started at 1337')
 })
