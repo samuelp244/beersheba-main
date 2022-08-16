@@ -12,7 +12,7 @@ app.get('/',(req:Request,res:Response)=>{
   res.sendFile(path.join(__dirname,'public','index.html'))
 })
 
-app.post('/sendPrayerRequest',async (req:Request,res:Response)=>{
+app.post('/api/v1/sendPrayerRequest',async (req:Request,res:Response)=>{
 
     let output = `
     <b>Full Name: </b><span> ${req.body.full_name}</span><br>

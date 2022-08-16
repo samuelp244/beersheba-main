@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.c7f327a2.css",
-    "main.js": "/static/js/main.cb29b459.js",
+    "main.js": "/static/js/main.8fcaba06.js",
     "static/media/edited_HOUSE_OF_BEATITUDES.png": "/static/media/edited_HOUSE_OF_BEATITUDES.2678e1d6f1afde4ba162.png",
     "static/media/Shalem_edited.jpg": "/static/media/Shalem_edited.3ed413461bb99bf60b8f.jpg",
     "static/media/Logo.png": "/static/media/Logo.110ea4aa5aee4bad3bfe.png",
     "index.html": "/index.html",
     "main.c7f327a2.css.map": "/static/css/main.c7f327a2.css.map",
-    "main.cb29b459.js.map": "/static/js/main.cb29b459.js.map"
+    "main.8fcaba06.js.map": "/static/js/main.8fcaba06.js.map"
   },
   "entrypoints": [
     "static/css/main.c7f327a2.css",
-    "static/js/main.cb29b459.js"
+    "static/js/main.8fcaba06.js"
   ]
 }
