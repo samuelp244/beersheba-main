@@ -48,6 +48,9 @@ const Navbar = () => {
                           <div>
                             <Link to="/"><p>CONTACT US</p></Link>
                           </div>
+                          <div>
+                            <Link to='/sunday-school/login'>LOGIN</Link>
+                          </div>
                       </div>
                   </div>
                 :

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getAllVideosList, YOUTUBE_API_KEY } from '../../api/apiCalls'
+import { YOUTUBE_API_KEY } from '../../api/apiCalls'
 import { useAllVideosList } from '../../api/queries'
 // import { useAllVideosList } from '../../api/queries'
 import { PlaylistItem } from '../../types/interfacesAndTypes'
@@ -24,8 +24,6 @@ const RecentVideosList = () => {
             setTotalResults(data.pageInfo.totalResults)
             setFromResults(1);
             setToResults(30);
-            
-         
         }
     },[data])
     

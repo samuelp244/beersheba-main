@@ -1,11 +1,16 @@
 import express, { Express, Request, Response } from 'express'
 import nodemailer from 'nodemailer'
 import cors from 'cors';
+import path from 'path';
 const app:Express = express();
 
 app.use(express.json())
 app.use(cors())
+app.use(express.static(path.join(__dirname + "/public")))
 
+app.get('/',(req:Request,res:Response)=>{
+  res.sendFile(path.join(__dirname,'public','index.html'))
+})
 
 app.post('/sendPrayerRequest',async (req:Request,res:Response)=>{
 
@@ -46,6 +51,6 @@ app.post('/sendPrayerRequest',async (req:Request,res:Response)=>{
 
 })
 
-app.listen(1337,()=>{
+app.listen(1339,()=>{
     console.log('app started at 1337')
 })
