@@ -31,6 +31,7 @@ const MeetingsPage = () => {
             }
         }
         getVideoDetails();
+        window.scrollTo(0, 0);
         return ()=>{
             isMounted = false;
             controller.abort();

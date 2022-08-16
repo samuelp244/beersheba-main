@@ -1,5 +1,5 @@
 import { SelectChangeEvent } from '@mui/material';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../Components/HomeComponents/Footer';
 import Navbar from '../Components/HomeComponents/Navbar';
 import FilterButton from '../Components/YTComponents/FilterButton';
@@ -26,6 +26,9 @@ const MeetingsListPage = (props:MeetingsListProps) => {
         setMeetingsDisplay(event.target.value);
 
       };
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    },[])
     
     return (
     <>

@@ -38,7 +38,8 @@ const SeriesPage = () => {
       })
     } 
     window.scrollTo(0, 0);
-  },[playlistId,PlaylistVideoId,currItemId])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[playlistId])
 
   return (
     <div className='grid grid-cols-1 gap-4'>
