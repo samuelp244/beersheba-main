@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { fetchRecentData, fetchUpcomingData, getAllPlaylistsData, getAllVideosList, getPlaylistItems } from './apiCalls'
+import { fetchLiveData, fetchRecentData, fetchUpcomingData, getAllPlaylistsData, getAllVideosList, getPlaylistItems } from './apiCalls'
 
 
 export const useRecentVideosList = () => useQuery(['recentVideosList'],fetchRecentData, {
@@ -9,6 +9,11 @@ export const useRecentVideosList = () => useQuery(['recentVideosList'],fetchRece
 export const useUpcomingVideosList = () => useQuery(['UpComingVideosList'],fetchUpcomingData, {
     staleTime: Infinity
   });
+
+export const useLiveVideosList = () => useQuery(['LiveVideosList'],fetchLiveData, {
+  staleTime: Infinity
+});
+
 
 const params = {
   nextButtonToken:null,

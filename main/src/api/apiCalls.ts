@@ -19,6 +19,13 @@ export const fetchUpcomingData = async () =>{
     return items.slice(0,3)
 } 
 
+export const fetchLiveData = async () =>{
+    const data:fetchRecentDataType = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCjm1A-rBB_6nbP-fuqyIrow&eventType=none&maxResults=30&order=date&type=video&key=${YOUTUBE_API_KEY}`)
+    .then(res=>res.json())
+    const items = data.items.filter(obj=>obj.snippet.liveBroadcastContent === "live")
+    return items.slice(0,3)
+} 
+
 export const getAllVideosList = async (params:RecentVideosParams) =>{
     const data:AllVideosListDataType = await fetch(`${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=UUjm1A-rBB_6nbP-fuqyIrow&maxResults=30&key=${YOUTUBE_API_KEY}`)
     .then(res=>res.json());

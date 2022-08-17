@@ -2,9 +2,17 @@ import React from 'react'
 
 const AboutBox = () => {
   return (
-    <div className='grid grid-cols-1 rounded-lg shadow-lg p-3 bg-white'>
-        <p className='text-lg font-semibold'>About Beersheba Chuch,Kakinada</p>
-        <p className='text-sm'>With a great burden for the Lords Ministry few elders of Kakinada and who are co-workers with Bro. Bakht Singh from the early days, started praying Lord to open doors to start Ministry at Kakinada with a motto to serve the lord earnestly in 1983. Lord as shown a clear will when Bro. C.Prabhudas an elder and co-worker of Bro. Bakht Singh from HEBRON Visited Kakinada in 1987, while the elders at Kakinada Bro. Balasundara Rau, Bro. James prayed together with Bro. Prabhudas for a suitable place for worship at Kakinada.  A place near Boat club was offered by a local Hindu on rent and when the Brothers prayed on kneels in the sight for Lord's will God has shown his clear will and Bro. Prabhudas prophesied that Lord is going to do miracles at this place.  Immediately a thatched shed was erected to accommodate a 100 people where they can worship and pray with liberty.  On 10th of May 1987 Bro Prabhudas dedicated the place of worship and named the place "BEERSHEBA" House of Worship and Prayer.</p>
+    <div className='grid grid-cols-1 gap-2 rounded-lg shadow-lg p-3 bg-white'>
+      <div>
+        <p className='text-lg font-bold'>About Beersheba Chuch,Kakinada</p>
+      </div>
+        <p className='text-sm'>In 1983, a small group of Kakinada elders who had a heavy burden for the Lord's ministry and had worked alongside Bro. Bakht Singh since their early days began to pray to the Lord for the opening of doors to establish a ministry in Kakinada with the mission statement "serve the Lord passionately." Bro. Prabhudas dedicated the place of worship on May 10th, 1987, and gave it the name "BEERSHEBA" House of Worship and Prayer.</p>    
+      <div>
+
+      </div>
+      <div className='flex justify-end'>
+          <button className=' text-center font-medium text-blue-500 border-2 border-blue-500  rounded-md p-1 px-3  px-auto  transition duration-500 hover:scale-105' >LEARN MORE</button>
+      </div>
     </div>
   )
 }

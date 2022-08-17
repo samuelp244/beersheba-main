@@ -35,11 +35,11 @@ const PrayerReqBox = () => {
   return (
     <div className='rounded-lg shadow-lg grid gap-3  p-2 py-3 bg-white'>
       <div className='flex justify-start'>
-        <p className='text-lg font-semibold'>Prayer Request</p>
+        <p className='text-lg font-bold ml-2'>Prayer Request</p>
       </div>
       <div className="grid grid-cols-3 gap-2 px-2">
         <input type="text" name="full_name" value={PrayerDetails.full_name} onChange={handleChange} className=' col-span-2 rounded-md p-1 px-2 border' placeholder='Full Name' />
-        <button className='text-sm font-medium text-white bg-blue-500  rounded-md p-1 px-3  transition duration-500 hover:scale-105 ' onClick={()=>{setPrayerModalOpened(true)}}>Submit</button>
+        <button className='text-sm text-center font-medium text-white bg-blue-500  rounded-md p-1 px-auto  transition duration-500 hover:scale-105 ' onClick={()=>{setPrayerModalOpened(true)}}>Submit</button>
       </div>
         <Modal
             opened={prayerModalOpened}

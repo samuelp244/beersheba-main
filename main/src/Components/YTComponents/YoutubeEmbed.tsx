@@ -5,9 +5,9 @@ interface YoutubeEmbedProps{
     embedId:string
 }
 const YoutubeEmbed = (props:YoutubeEmbedProps) => (
-  <div className="video-responsive">
+  <div className="video-responsive ">
     <iframe
-      className="aspect-video w-full"
+      className="aspect-video w-full shadow-lg  rounded-[7px]"
       src={`https://www.youtube.com/embed/${props.embedId}`}
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

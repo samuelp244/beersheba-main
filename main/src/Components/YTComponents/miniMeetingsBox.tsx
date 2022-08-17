@@ -1,5 +1,6 @@
 // import React, { useEffect, useState } from 'react'
 // import { YOUTUBE_API_KEY } from '../../api/getRecentVideosYT'
+import LiveVideosList from '../../api/QueryComponents/liveVideosList'
 import ThreeRecentVideos from '../../api/QueryComponents/threeRecentVideos'
 import ThreeUpcomingVideos from '../../api/QueryComponents/threeUpcomingVideos'
 // import { youtubeSearchType } from '../../types/interfacesAndTypes'
@@ -23,8 +24,8 @@ const MiniMeetingsBox = () => {
                     <ThreeRecentVideos/>
                 </div>
                 <div className="tab-pane fade" id="nav-live" role="tabpanel" aria-labelledby="nav-live-tab" tabIndex={0}>
-                    <h5 className=''>No Live Videos</h5>
-                    
+                    <h5 className='py-2 font-bold'>No Live Videos</h5>
+                    <LiveVideosList />
                 </div>
                 
                 <div className="tab-pane fade" id="nav-upcoming" role="tabpanel" aria-labelledby="nav-upcoming-tab" tabIndex={0}>

@@ -13,7 +13,7 @@ const ThreeRecentVideos = () => {
   return (
     <>
         <ul className='flex flex-col'>
-            {data ? data.slice(0,3).map(item=>{
+            {data?.length!==0? data?.slice(0,3)?.map(item=>{
             const {id, snippet} = item;
             const {videoId} = id;
             const {title, thumbnails} = snippet;
@@ -25,8 +25,8 @@ const ThreeRecentVideos = () => {
                     </Link>
                 </div>
             ) 
-        }):<div>
-                <h5 className=''>No Recent Videos</h5>
+        }):<div className='flex justify-center'>
+                <h5 className='text-sm py-2'>No Recent Videos</h5>
             </div>}
         </ul>
     </>
