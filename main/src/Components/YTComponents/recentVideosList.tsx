@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { BASE_URL } from '../../api/apiCalls'
 // import { getAllVideosPageData, YOUTUBE_API_KEY } from '../../api/apiCalls'
 import { useAllVideosList } from '../../api/queries'
 import { AllVideosListDataType } from '../../types/apiResponseTypes'
@@ -35,7 +36,7 @@ const RecentVideosList = () => {
         // console.log('hi')
         // console.log(prevPageid)
         if(prevPageid){
-            const res:AllVideosListDataType = await axios.get(`http://localhost:1337/getAllData?prevPageToken=${prevPageid}`)
+            const res:AllVideosListDataType = await axios.get(`${BASE_URL}/getAllData?prevPageToken=${prevPageid}`)
             .then(res=>res.data)
             // console.log(res)
            
@@ -86,7 +87,7 @@ const RecentVideosList = () => {
 
     const nextButtonHandler = async ()=>{
             if(nextPageid){
-                const res:AllVideosListDataType = await axios.get(`http://localhost:1337/getAllData?nextPageToken=${nextPageid}`)
+                const res:AllVideosListDataType = await axios.get(`${BASE_URL}/getAllData?nextPageToken=${nextPageid}`)
                 .then(res=>res.data)
              
                 if(res.nextPageToken){

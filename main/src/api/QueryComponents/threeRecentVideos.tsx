@@ -1,6 +1,4 @@
 import React from 'react'
-// import { useQuery } from '@tanstack/react-query'
-// import { YOUTUBE_API_KEY } from './getRecentVideosYT'
 import { Link } from 'react-router-dom'
 import { useRecentVideosList } from '../queries'
 

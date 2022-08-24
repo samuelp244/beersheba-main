@@ -30,7 +30,7 @@ const something = (function() {
     };
 })();
 
-something();
+// something();
 
 
 // app.get('/*',FrontEndHandler)

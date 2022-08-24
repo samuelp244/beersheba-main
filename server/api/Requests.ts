@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import AllDataModel from '../models/AllDataHandler';
-import PlaylistItemsModel from '../models/PlaylistItems';
+import AllDataModel from '../models/AllDataHandler.models';
+import PlaylistItemsModel from '../models/PlaylistItems.models';
 import RecentDataModel from '../models/RecentData.models'
 
 export const getRecentData = async(req:Request,res:Response)=>{
@@ -44,7 +44,3 @@ export const getAllData = async(req:Request,res:Response)=>{
         }
     }
 }
-
-export const getVideoDetails = async (req:Request,res:Response) => {
-    
-} 

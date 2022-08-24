@@ -3,12 +3,12 @@ import { ytfetchData } from "./YTtypes";
 
 
 
-// export const YOUTUBE_PLAYLIST_ITEMS_API="https://www.googleapis.com/youtube/v3/playlistItems"
-// export const YOUTUBE_API_KEY =  process.env.REACT_APP_GOOGLE_API_KEY
 
+// export const YOUTUBE_API_KEY =  process.env.REACT_APP_GOOGLE_API_KEY
+export const BASE_URL = 'http://localhost:1337'
 
 const getRecentdata = async()=>{
-    const data:ytfetchData[] = await fetch('http://localhost:1337/ytrecentdata')
+    const data:ytfetchData[] = await fetch(`${BASE_URL}/ytrecentdata`)
     .then(res=>res.json())
     return data.sort((first, second) => { return new Date(second.snippet.publishTime).getTime() - new Date(first.snippet.publishTime).getTime()});
 }
@@ -33,14 +33,14 @@ export const fetchLiveData = async () =>{
 } 
 
 export const getAllVideosList = async () =>{
-    const data:AllVideosListDataType = await fetch('http://localhost:1337/getAllData')
+    const data:AllVideosListDataType = await fetch(`${BASE_URL}/getAllData`)
     .then(res=>res.json());
     return data
 }
 
 
 export const getAllPlaylistsData = async () =>{
-    const data:mongoPlaylistdata[] = await fetch('http://localhost:1337/getplaylistdata')
+    const data:mongoPlaylistdata[] = await fetch(`${BASE_URL}/getplaylistdata`)
     .then(res=>res.json());
     return data.sort((first, second) => { return new Date(second.publishedAt).getTime() - new Date(first.publishedAt).getTime()});
 }

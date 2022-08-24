@@ -1,11 +1,11 @@
 import {getAllPlaylistsData, getPlaylistItems} from '../apiCalls';
-import PlaylistItemsModel from '../../models/PlaylistItems';
+import PlaylistItemsModel from '../../models/PlaylistItems.models';
 
 const PlaylistItemsdbHandler = async ()=>{
     try{
-        await PlaylistItemsModel.deleteMany()
+        
         const playlistData = await getAllPlaylistsData();
-
+        await PlaylistItemsModel.deleteMany()
         playlistData?.map(async i=>{
             const playlistItems = await getPlaylistItems(i.id)
             // console.log(playlistItems)

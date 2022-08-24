@@ -1,13 +1,12 @@
-import AllDataModel from '../../models/AllDataHandler';
+import AllDataModel from '../../models/AllDataHandler.models';
 import { getAllData } from '../apiCalls';
 import axios from 'axios';
 
 const AlldatadbHandler = async()=>{
     
     try{
-        await AllDataModel.deleteMany({});
-        
         let Alldata = await getAllData();
+        await AllDataModel.deleteMany({});
         await AllDataModel.create({
             index:0,
             nextPageToken:Alldata?.nextPageToken,
