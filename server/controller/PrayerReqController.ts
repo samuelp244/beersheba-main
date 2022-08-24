@@ -25,7 +25,7 @@ export const PrayerReqHandler = async (req:Request,res:Response)=>{
       try{
         let info = await transporter.sendMail({
             from: `"Prayer Request Bot" <RrayerRequestBot@beershebakkd.org>`, 
-            to: "samuelp244@gmail.com, xtrafalgar.law07@gmail.com", 
+            to: `${process.env.RECIEVE_EMAIL_1},${process.env.RECIEVE_EMAIL_2}`, 
             subject: "Prayer Request", 
             text: req.body.message, 
             html: output, 
