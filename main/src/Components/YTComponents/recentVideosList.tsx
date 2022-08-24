@@ -1,13 +1,16 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { YOUTUBE_API_KEY } from '../../api/apiCalls'
+import { Link } from 'react-router-dom'
+// import { getAllVideosPageData, YOUTUBE_API_KEY } from '../../api/apiCalls'
 import { useAllVideosList } from '../../api/queries'
+import { AllVideosListDataType } from '../../types/apiResponseTypes'
 // import { useAllVideosList } from '../../api/queries'
 import { PlaylistItem } from '../../types/interfacesAndTypes'
 
 const RecentVideosList = () => {
     const [playlistData,setPlaylistData] = useState<PlaylistItem[]>([])
-    const [nextPageid,setNextPageId] = useState<string|null>(null)
-    const [prevPageid,setPrevPageId] = useState<string|null>(null)
+    const [nextPageid,setNextPageId] = useState<string>()
+    const [prevPageid,setPrevPageId] = useState<string>()
     const [totalResults,setTotalResults] = useState(0);
     const [fromResults,setFromResults] = useState(1);
     const [toResults,setToResults] = useState(30);
@@ -16,91 +19,102 @@ const RecentVideosList = () => {
     const [showNext, setShowNext] = useState(true);
 
     const {data} = useAllVideosList();
+    // console.log(prevPageid)
 
     useEffect(()=>{
         if(data!==undefined){
-            setNextPageId(data.nextPageToken)
-            setPlaylistData(data.items);
-            setTotalResults(data.pageInfo.totalResults)
+            setNextPageId(data?.nextPageToken)
+            setPlaylistData(data.items.sort((first, second) => { return new Date(second.snippet.publishedAt).getTime() - new Date(first.snippet.publishedAt).getTime()}));
+            setTotalResults(data?.pageInfo?.totalResults)
             setFromResults(1);
             setToResults(30);
         }
     },[data])
     
     const prevButtonHandler = async ()=>{
-        if(playlistData.length<30){
-            setFromResults(fromResults-30)
-            setToResults(toResults-(totalResults%100))
-            const res = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUjm1A-rBB_6nbP-fuqyIrow&maxResults=30&pageToken=${prevPageid}&key=${YOUTUBE_API_KEY}`)
-            .then(res=>res.json())
-            setNextPageId(res.nextPageToken)
-            setPrevPageId(res.prevPageToken)
-            setPlaylistData(res.items);
-            if(res.nextPageToken){
-                setShowNext(true)
+        // console.log('hi')
+        // console.log(prevPageid)
+        if(prevPageid){
+            const res:AllVideosListDataType = await axios.get(`http://localhost:1337/getAllData?prevPageToken=${prevPageid}`)
+            .then(res=>res.data)
+            // console.log(res)
+           
+            if(playlistData.length<30){
+                setFromResults(fromResults-30)
+                setToResults(toResults-(totalResults%100))
+                
+                // console.log(res)
+                setNextPageId(res.nextPageToken)
+                setPrevPageId(res.prevPageToken)
+                setPlaylistData(res.items.sort((first, second) => { return new Date(second.snippet.publishedAt).getTime() - new Date(first.snippet.publishedAt).getTime()}));
+                if(res.nextPageToken){
+                    setShowNext(true)
+                }else{
+                    setShowNext(false)
+                }
+                if(res.prevPageToken){
+                    setShowPrev(true)
+                }else{
+                    setShowPrev(false)
+                }
+                
+                window.scrollTo(0, 0);
             }else{
-                setShowNext(false)
+                setNextPageId(res.nextPageToken)
+                setPrevPageId(res.prevPageToken)
+                setFromResults(fromResults-30);
+                setToResults(toResults-30)
+                setPlaylistData(res.items.sort((first, second) => { return new Date(second.snippet.publishedAt).getTime() - new Date(first.snippet.publishedAt).getTime()}));
+                // console.log(res.items)
+                if(res.nextPageToken){
+                    setShowNext(true)
+                }else{
+                    setShowNext(false)
+                }
+                if(res.prevPageToken){
+                    setShowPrev(true)
+                }else{
+                    setShowPrev(false)
+                }
+                
+                window.scrollTo(0, 0);
             }
-            if(res.prevPageToken){
-                setShowPrev(true)
-            }else{
-                setShowPrev(false)
-            }
-            
-            window.scrollTo(0, 0);
-        }else{
-            const res = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUjm1A-rBB_6nbP-fuqyIrow&maxResults=30&pageToken=${prevPageid}&key=${YOUTUBE_API_KEY}`)
-            .then(res=>res.json())
-            setNextPageId(res.nextPageToken)
-            setPrevPageId(res.prevPageToken)
-            setFromResults(fromResults-30);
-            setToResults(toResults-30)
-            setPlaylistData(res.items);
-            // console.log(res.items)
-            if(res.nextPageToken){
-                setShowNext(true)
-            }else{
-                setShowNext(false)
-            }
-            if(res.prevPageToken){
-                setShowPrev(true)
-            }else{
-                setShowPrev(false)
-            }
-            
-            window.scrollTo(0, 0);
         }
         
-        
     }
+
+
     const nextButtonHandler = async ()=>{
-            const res = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUjm1A-rBB_6nbP-fuqyIrow&maxResults=30&pageToken=${nextPageid}&key=${YOUTUBE_API_KEY}`)
-            .then(res=>res.json())
-            console.log(res)
-            if(res.nextPageToken){
-                setNextPageId(res.nextPageToken)
-                setFromResults(fromResults+30)
-                setToResults(toResults+30)
+            if(nextPageid){
+                const res:AllVideosListDataType = await axios.get(`http://localhost:1337/getAllData?nextPageToken=${nextPageid}`)
+                .then(res=>res.data)
+             
+                if(res.nextPageToken){
+                    setNextPageId(res.nextPageToken)
+                    setFromResults(fromResults+30)
+                    setToResults(toResults+30)
+                }
+                setPlaylistData(res.items.sort((first, second) => { return new Date(second.snippet.publishedAt).getTime() - new Date(first.snippet.publishedAt).getTime()}));
+                setPrevPageId(res.prevPageToken)
+                if(res.items.length<30){
+                    setFromResults(toResults+1)
+                    setToResults(totalResults)
+                }
+                if(res.nextPageToken){
+                    setShowNext(true)
+                }else{
+                    setShowNext(false)
+                }
+                if(res.prevPageToken){
+                    setShowPrev(true)
+                }else{
+                    setShowPrev(false)
+                }
+                // console.log(res)
+                
+                window.scrollTo(0, 0);
             }
-            setPlaylistData(res.items);
-            setPrevPageId(res.prevPageToken)
-            if(res.items.length<30){
-                setFromResults(toResults+1)
-                setToResults(totalResults)
-            }
-            if(res.nextPageToken){
-                setShowNext(true)
-            }else{
-                setShowNext(false)
-            }
-            if(res.prevPageToken){
-                setShowPrev(true)
-            }else{
-                setShowPrev(false)
-            }
-            console.log(res)
             
-            window.scrollTo(0, 0);
         }
 
     // console.log(data)
@@ -113,14 +127,12 @@ const RecentVideosList = () => {
             <ul className='  border-slate-100 rounded-[10px] divide-y'>
             {
                 playlistData?.map(item=>{
-                    const { id, snippet} = item;
+                    const { _id, snippet} = item;
                     const {title, resourceId} = snippet;
                     return (
-                        <div className="   px-3 pb-2 " key={id} >
+                        <div className="   px-3 pb-2 " key={_id} >
                             <div className='' >
-                                <a href={`/meetings/${resourceId.videoId}`}><p className='mb-0 py-3'>{title}</p></a>
-                                {/* <a href={`/meetings/${resourceId.videoId}`} target="_blank" rel="noopener noreferrer"><button className=' watch-btn btn btn-sm btn-outline-dark mx' >watch</button></a> */}
-                                
+                                <Link to={`/meetings/${resourceId?.videoId}`} state={{title:title}}><p className='mb-0 py-3'>{title}</p></Link>
                             </div>
                             
                         </div>

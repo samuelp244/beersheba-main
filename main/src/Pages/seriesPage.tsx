@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
-import { getPlaylistItems } from '../api/apiCalls'
+import { useAllPlaylistsData } from '../api/queries'
+// import { getPlaylistItems } from '../api/apiCalls'
 import Footer from '../Components/HomeComponents/Footer'
 import Navbar from '../Components/HomeComponents/Navbar'
 import YoutubeEmbed from '../Components/YTComponents/YoutubeEmbed'
 import useMediaQuery from '../Hooks/useMediaQuery'
-import { PlaylistItem } from '../types/interfacesAndTypes'
+import { mongoPlaylistdata } from '../types/apiResponseTypes'
+// import { PlaylistItem } from '../types/interfacesAndTypes'
 
 type LocationState = {
   state:{
@@ -13,12 +15,14 @@ type LocationState = {
   };
 }
 
+
+
 const SeriesPage = () => {
   let {playlistId} = useParams()
   // const [CurrentRecentPlaylist,setRecentPlaylist] = useState<PlaylistItem>();
   const location = useLocation() as unknown as LocationState;
   const PlaylistVideoId = location?.state?.id 
-  const [playlistItems,setPlaylistItems] = useState<PlaylistItem[]>([]);
+  const [playlistItems,setPlaylistItems] = useState<mongoPlaylistdata["items"][0][]>([]);
   const [currItemId,setCurrItemId] = useState(PlaylistVideoId);
   const [currTitle,setCurrTitle] = useState("")
 
@@ -27,20 +31,20 @@ const SeriesPage = () => {
     setCurrItemId(id);
     setCurrTitle(title)
   }
-
+  const {data} = useAllPlaylistsData();
   useEffect(()=>{
-    if(playlistId!==undefined){
-      getPlaylistItems(playlistId).then(res=>{
-        // console.log(res)
-        setPlaylistItems(res.items)
-        if(PlaylistVideoId===undefined) setCurrItemId(res.items[0].snippet.resourceId.videoId)
-        const temmpArray:PlaylistItem[] = res.items.filter((obj:PlaylistItem)=>obj.snippet.resourceId.videoId===currItemId)
-        setCurrTitle(temmpArray[0]?.snippet.title)
-      })
-    } 
+    if(data){
+      const playlist = data?.filter(obj=>obj.PlaylistId===playlistId)[0]
+      setPlaylistItems(playlist.items);
+      if(PlaylistVideoId===undefined) setCurrItemId(playlist.items[0].snippet.videoId)
+      const temmpArray = playlist.items.filter((obj)=>obj.snippet.videoId===currItemId)
+      setCurrTitle(temmpArray[0]?.snippet.title)
+    }
+    
     window.scrollTo(0, 0);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[playlistId])
+  },[])
+
   const Sm = useMediaQuery("(max-width: 550px)")
   return (
     <div className='grid grid-cols-1 gap-4'>
@@ -60,15 +64,17 @@ const SeriesPage = () => {
                   </div>
                   <ul className='grid gap-2'>
                     {playlistItems?.map(item=>{
-                      const { id, snippet} = item;
-                      const {title, thumbnails, resourceId} = snippet;
+                      const { _id, snippet} = item;
+                      const {title, thumbnails, videoId} = snippet;
                       return (
-                        <div className="p-1" key={id} >
-                            <a className='flex' href="/#" onClick={(e)=>setPlayListIdHandler(e,resourceId.videoId,title)}>
-                                <img className='w-[72px] h-[54px] my-auto' src={thumbnails.default.url}  alt="..."/>
+                        <>
+                        {item.snippet.title!=="Deleted video"?<div className="p-1" key={_id} >
+                            <a className='flex' href="/#" onClick={(e)=>setPlayListIdHandler(e,videoId,title)}>
+                                <img className='w-[72px] h-[54px] my-auto' src={thumbnails?.default?.url}  alt="..."/>
                                 <p className=' meetingsBoxtext p-1'>{title}</p>
                             </a>
-                        </div>
+                        </div>:null}
+                        </>
                       );
                     })}
                   </ul>

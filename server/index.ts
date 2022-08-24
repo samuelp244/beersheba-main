@@ -1,55 +1,47 @@
 import express, { Express, Request, Response } from 'express'
-import nodemailer from 'nodemailer'
+import mongoose from 'mongoose';
 import cors from 'cors';
 import path from 'path';
+import 'dotenv/config'
+import { PrayerReqHandler } from './controller/PrayerReqController';
+import { FrontEndHandler } from './controller/FrontEndHandler';
+import { YTDataHandler } from './controller/yTDataController';
+// import { RecentData } from './api/apiCalls';
+import { getRecentData,getAllData, getPlayistData } from './api/Requests';
+// import {  } from './api/Requests/AllData';
+
+
 const app:Express = express();
 
 app.use(express.json())
 app.use(cors())
 app.use(express.static(path.join(__dirname + "/public")))
 
-app.get('/*',(req:Request,res:Response)=>{
-  res.sendFile(path.join(__dirname,'public','index.html'))
-})
+mongoose.connect('mongodb://localhost:27017/beersheba-YTData')
 
-app.post('/api/v1/sendPrayerRequest',async (req:Request,res:Response)=>{
+const something = (function() {
+    var executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            YTDataHandler();
+            
+        }
+    };
+})();
 
-    let output = `
-    <b>Full Name: </b><span> ${req.body.full_name}</span><br>
-    <b>
-    Email: </b><span>${req.body.email}</span><br>
-    <b>
-    mobile: </b><span>${req.body.mobile}</span><br>
-    <b>
-    Message Subject: </b><span>${req.body.message_subject}</span><br>
-    <b>
-    Message: </b><span>${req.body.message}</span>
-    `
-    let transporter = nodemailer.createTransport({
-        service: 'SendinBlue', 
-        auth: {
-          user: 'samuel.p07@yahoo.com', 
-          pass: '1EXx5HsDTnqg6wUM',
-        },
-      });
+something();
 
-      try{
-        let info = await transporter.sendMail({
-            from: `"Prayer Request Bot" <RrayerRequestBot@beershebakkd.org>`, 
-            to: "samuelp244@gmail.com, xtrafalgar.law07@gmail.com", 
-            subject: "Prayer Request", 
-            text: req.body.message, 
-            html: output, 
-          });
-          console.log("Message sent: %s", info.messageId);
-          console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-          res.send({message:"message sent"})
-      }catch (err){
-        console.log(err)
-      }
-      
 
-})
+// app.get('/*',FrontEndHandler)
+
+app.get('/ytrecentdata',getRecentData)
+
+app.get('/getAllData',getAllData)
+
+app.get('/getplaylistdata',getPlayistData)
+
+app.post('/api/v1/sendPrayerRequest',PrayerReqHandler)
 
 app.listen(1337,()=>{
     console.log('app started at 1337')

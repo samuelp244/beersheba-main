@@ -24,7 +24,7 @@ const MiniMeetingsBox = () => {
                     <ThreeRecentVideos/>
                 </div>
                 <div className="tab-pane fade" id="nav-live" role="tabpanel" aria-labelledby="nav-live-tab" tabIndex={0}>
-                    <h5 className='py-2 font-bold'>No Live Videos</h5>
+                    <h5 className='py-2 font-bold'>Live Videos</h5>
                     <LiveVideosList />
                 </div>
                 

@@ -43,7 +43,7 @@ const Navbar = () => {
                             <Link to="/"><p>GALLERY</p></Link>
                           </div>
                           <div>
-                            <Link to="/"><p>LIVE</p></Link>
+                            <Link to="/live"><p>LIVE</p></Link>
                           </div>
                           <div>
                             <Link to="/"><p>CONTACT US</p></Link>
@@ -127,7 +127,7 @@ const Navbar = () => {
                                     <Link to="/"><p>GALLERY</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
-                                    <Link to="/"><p>LIVE</p></Link>
+                                    <Link to="/live"><p>LIVE</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
                                     <Link to="/"><p>CONTACT US</p></Link>

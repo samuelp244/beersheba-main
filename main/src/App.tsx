@@ -8,6 +8,7 @@ import './index.css';
 import SeriesPage from './Pages/seriesPage';
 import MeetingsListPage from './Pages/meetingsListPage';
 import MeetingsPage from './Pages/meetingsPage';
+import LivePage from './Pages/livePage';
 
 
 
@@ -23,9 +24,10 @@ function App() {
             <Route path='/meetings/:videoId' element={<MeetingsPage/>}></Route>
             <Route path='/series' element={<MeetingsListPage CurrSermonType="series"/>}></Route>
             <Route path='/series/:playlistId' element={<SeriesPage/>}></Route>
+            <Route path='/live' element={<LivePage/>}></Route>
           </Routes>
         </Router>
-        
+
     </>
   );
 }

@@ -8,5 +8,5 @@
     "strict": true,               
     "skipLibCheck": true                                
   },
-  "include": [ "./index.d.ts"]
+  "include": [ "types/index.d.ts"]
 }

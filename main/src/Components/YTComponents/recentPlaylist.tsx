@@ -14,13 +14,13 @@ const RecentPlaylist = () => {
             <h1 className='text-lg font-bold'>Recent Sermon</h1>
         </div>
         <div >
-            <h1 className='text-xl mb-4 font-medium '>{data?.items[0].snippet.title}</h1>
-            {data?<RecentPlaylistItemsList playlistId={data?.items[0].id} />:null}
+            <h1 className='text-xl mb-4 font-medium '>{data? data[0].PlaylistTitle:null}</h1>
+            {data?<RecentPlaylistItemsList playlistId={data? data[0].PlaylistId:''} />:null}
             
             
         </div>
         <div className='flex justify-end'>
-            <Link to={`/series/${data?.items[0].id}`}><IoIosArrowDropright size={"30px"} color={"rgb(59 130 246)"} /> </Link>
+            <Link to={`/series/${data? data[0].PlaylistId:''}`}><IoIosArrowDropright size={"30px"} color={"rgb(59 130 246)"} /> </Link>
         </div>
     </div>
   )

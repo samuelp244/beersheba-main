@@ -25,11 +25,11 @@ const RecentPlaylistItemsList = (props:RecentPlaylistItemsListProps) => {
     <div className='grid grid-cols-2 gap-3'>
     {
         data?.items.slice(0,6).map(i=>{
-            const {id, snippet} = i;
-            const {title, resourceId} = snippet;
+            const {_id, snippet} = i;
+            const {title, videoId} = snippet;
             return (
-                <div className='' key={id}>
-                    <a href="/#" onClick={(e)=>navigateToSeriesPage(e,resourceId.videoId)} target="_blank" rel="noopener noreferrer" >
+                <div className='' key={_id}>
+                    <a href="/#" onClick={(e)=>navigateToSeriesPage(e,videoId)} target="_blank" rel="noopener noreferrer" >
                         <p className=' truncate '>{title}</p>
                     </a>
                 </div>

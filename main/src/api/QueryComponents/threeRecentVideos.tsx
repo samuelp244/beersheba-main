@@ -14,8 +14,8 @@ const ThreeRecentVideos = () => {
     <>
         <ul className='flex flex-col'>
             {data?.length!==0? data?.slice(0,3)?.map(item=>{
-            const {id, snippet} = item;
-            const {videoId} = id;
+            const {videoId, snippet} = item;
+            // const {videoId} = id;
             const {title, thumbnails} = snippet;
             return (
                 <div className='p-1' key={videoId}>

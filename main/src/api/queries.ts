@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { fetchLiveData, fetchRecentData, fetchUpcomingData, getAllPlaylistsData, getAllVideosList, getPlaylistItems } from './apiCalls'
+import { fetchLiveData, fetchRecentData, fetchUpcomingData, getAllPlaylistsData, getAllVideosList } from './apiCalls'
 
 
 export const useRecentVideosList = () => useQuery(['recentVideosList'],fetchRecentData, {
@@ -15,16 +15,20 @@ export const useLiveVideosList = () => useQuery(['LiveVideosList'],fetchLiveData
 });
 
 
-const params = {
-  nextButtonToken:null,
-  prevButtonToken:null
-}
+// const params = {
+//   nextButtonToken:null,
+//   prevButtonToken:null
+// }
 
-export const useAllVideosList = () => useQuery(['allVideosList',params],()=>getAllVideosList(params))
+export const useAllVideosList = () => useQuery(['allVideosList'],getAllVideosList)
 
 export const useAllPlaylistsData = () => useQuery(['allPlaylistData'],getAllPlaylistsData);
 
-export const usePlaylistItems = (playlistId:string) => useQuery(['recentPlaylistItems',playlistId],()=> getPlaylistItems(playlistId));
-
+// export const usePlaylistItems = (playlistId:string) => useQuery(['recentPlaylistItems',playlistId],()=> getPlaylistItems(playlistId));
+export const usePlaylistItems = (playlistId:string) => {
+  const {data} = useAllPlaylistsData();
+  const PlaylistItems = data?.filter(obj=>obj.PlaylistId===playlistId)
+  return {data:PlaylistItems? PlaylistItems[0]:undefined}
+}
 // export const useCurrPlaylistItems = ()
 

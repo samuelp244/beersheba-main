@@ -31,3 +31,26 @@ export interface PlaylistItemsType{
     }
     items:PlaylistItem[]
 }
+
+////////
+export interface mongoPlaylistdata{
+    _id:string,
+    PlaylistId:string,
+    PlaylistTitle:string,
+    publishedAt: string,
+    items:[{
+        _id:string,
+        snippet:{
+            publishedAt: string,
+            title:string,
+            videoId:string,
+            thumbnails: {
+                default: {
+                    url: string,
+                    width: string,
+                    height: string
+                }
+            }
+        }
+    }]
+}

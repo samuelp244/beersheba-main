@@ -16,14 +16,13 @@ const AllPlaylistBox = () => {
         <div >
             <div className='grid grid-cols-2 gap-3 '>
                 {
-                    data?.items.slice(0,6).map(item=>{
-                        const {id, snippet} = item;
-                        const {title} = snippet;
+                    data?.slice(0,6).map(item=>{
+                        const {PlaylistId, PlaylistTitle} = item;
                         return (
-                            <div className='' key={id}>
-                                <a href={`/series/${id}`} >
-                                    <p className=' '>{title}</p>
-                                </a>
+                            <div className='' key={PlaylistId}>
+                                <Link to={`/series/${PlaylistId}`} >
+                                    <p className=' '>{PlaylistTitle}</p>
+                                </Link>
                             </div>
                         );
                     })
