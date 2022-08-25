@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoadScript,  } from "@react-google-maps/api";
+// import { useLoadScript,  } from "@react-google-maps/api";
 // import {Link} from "react-router-dom";
 // import churhDetails from '../Components/mapComponents/churchMapParams.json'
 import Navbar from '../Components/HomeComponents/Navbar';
@@ -8,12 +8,12 @@ import Footer from '../Components/HomeComponents/Footer';
 import UnderConstructionPage from '../Components/HomeComponents/underConstructionPage';
 
 export default function Locations(){
-    const { isLoaded } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyA7x5WGa7bQglJS_aGw7fK4GtLzlCdFLww',
-    });
+    // const { isLoaded } = useLoadScript({
+    //     googleMapsApiKey: 'AIzaSyA7x5WGa7bQglJS_aGw7fK4GtLzlCdFLww',
+    // });
 
-    if(!isLoaded) return <div>Loading..</div>
-    console.log(isLoaded)
+    // if(!isLoaded) return <div>Loading..</div>
+    // console.log(isLoaded)
     return (
         <>
         <div className='grid grid-cols-1'>
