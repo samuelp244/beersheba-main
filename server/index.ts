@@ -6,10 +6,9 @@ import 'dotenv/config'
 import { PrayerReqHandler } from './controller/PrayerReqController';
 import { FrontEndHandler } from './controller/FrontEndHandler';
 import { YTDataHandler } from './controller/yTDataController';
-// import { RecentData } from './api/apiCalls';
 import { getRecentData,getAllData, getPlayistData } from './api/Requests';
-// import {  } from './api/Requests/AllData';
 
+import schedule from 'node-schedule'
 
 const app:Express = express();
 
@@ -19,18 +18,9 @@ app.use(express.static(path.join(__dirname + "/public")))
 
 mongoose.connect('mongodb://localhost:27017/beersheba-YTData')
 
-const something = (function() {
-    var executed = false;
-    return function() {
-        if (!executed) {
-            executed = true;
-            YTDataHandler();
-            
-        }
-    };
-})();
-
- // something();
+schedule.scheduleJob('0 * * * *',()=>{
+    YTDataHandler();
+})
 
 
 // app.get('/*',FrontEndHandler)

@@ -2,11 +2,12 @@ import { getRecentData } from "../apiCalls"
 import RecentDataModel from '../../models/RecentData.models'
 
 const RecentDatadbHandler = async()=>{
-    const currRecentData = await getRecentData();
+    const data = await getRecentData();
+    const currRecentData = data?.items
     // console.log(currRecentData?.items)
 
     try{
-        await RecentDataModel.deleteMany({})
+        if(!data?.error){await RecentDataModel.deleteMany({})
         currRecentData?.map(async i=>{
             try{
                 await RecentDataModel.create({
@@ -29,7 +30,10 @@ const RecentDatadbHandler = async()=>{
                 console.log(err)
             }
         });
-        console.log('updated Recent Data Items')
+        console.log('updated Recent Data Items')}
+        else{
+            console.log(`code: ${data.error.code},message: ${data.error.message}`)
+        }
 
     } catch (err){
         console.log(err)

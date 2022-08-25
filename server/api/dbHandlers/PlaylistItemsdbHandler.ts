@@ -4,7 +4,9 @@ import PlaylistItemsModel from '../../models/PlaylistItems.models';
 const PlaylistItemsdbHandler = async ()=>{
     try{
         
-        const playlistData = await getAllPlaylistsData();
+        const data = await getAllPlaylistsData();
+        const playlistData = data?.items
+       if(!data?.error){ 
         await PlaylistItemsModel.deleteMany()
         playlistData?.map(async i=>{
             const playlistItems = await getPlaylistItems(i.id)
@@ -46,7 +48,10 @@ const PlaylistItemsdbHandler = async ()=>{
                 console.log(err)
             }
         })
-        console.log('updated Playlist Items')
+        console.log('updated Playlist Items')}
+        else{
+            console.log(`code: ${data.error.code},message: ${data.error.message}`)
+        }
     }catch(err){
         console.log(err)
     }

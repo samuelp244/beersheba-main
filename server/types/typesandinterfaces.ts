@@ -10,7 +10,15 @@ export interface fetchRecentDataType{
     items:youtubeSearchType[]
 }
 
-export interface youtubeSearchType{
+export interface getRecentDataType{
+    items:youtubeSearchType[],
+    error:{
+        code:number,
+        message:string
+    }
+}
+
+interface youtubeSearchType{
     kind: string,
     etag: string,
     id: {
@@ -54,6 +62,10 @@ export interface AllVideosListDataType{
     pageInfo: {
         totalResults: number,
         resultsPerPage: number
+    },
+    error:{
+        code:number,
+        message:string
     }
 }
 
@@ -94,7 +106,14 @@ export interface PlaylistItem{
         videoOwnerChannelId: string
       }
 }
-export interface PlaylistsData{
+export interface getAllPlaylistsdataType{
+    items:PlaylistsData[],
+    error:{
+        code:number,
+        message:string
+    }
+}
+interface PlaylistsData{
     kind: string,
     etag: string,
     id: string,

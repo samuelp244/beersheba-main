@@ -6,6 +6,7 @@ const AlldatadbHandler = async()=>{
     
     try{
         let Alldata = await getAllData();
+        if(!Alldata?.error){
         await AllDataModel.deleteMany({});
         await AllDataModel.create({
             index:0,
@@ -130,7 +131,10 @@ const AlldatadbHandler = async()=>{
             }
         } 
         
-        console.log('updated All Data Items')
+        console.log('updated All Data Items')}
+        else{
+            console.log(`code: ${Alldata.error.code},message: ${Alldata.error.message}`)
+        }
 
        }catch(err){
         console.log(err)

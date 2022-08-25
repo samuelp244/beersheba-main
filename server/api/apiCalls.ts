@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { AllVideosListDataType, fetchRecentDataType, PlaylistItem, PlaylistsData, youtubeSearchType } from '../types/typesandinterfaces'
+import { AllVideosListDataType, fetchRecentDataType, getAllPlaylistsdataType, getRecentDataType, PlaylistItem } from '../types/typesandinterfaces'
 
 export const getRecentData = async () =>{
     
     try{
-        const res:youtubeSearchType[] = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCjm1A-rBB_6nbP-fuqyIrow&eventType=none&maxResults=30&order=date&type=video&key=${process.env.GOOGLE_API_KEY}`)
-        .then(res=>res.data.items)
+        const res:getRecentDataType = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCjm1A-rBB_6nbP-fuqyIrow&eventType=none&maxResults=30&order=date&type=video&key=${process.env.GOOGLE_API_KEY}`)
+        .then(res=>res.data)
         // console.log(res)
         return res
     }catch (err){
@@ -26,8 +26,8 @@ export const getAllData = async()=>{
 
 export const getAllPlaylistsData = async () =>{
     try{
-        const data:PlaylistsData[] = await axios.get(`https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCjm1A-rBB_6nbP-fuqyIrow&maxResults=15&key=${process.env.GOOGLE_API_KEY}`)
-        .then(res=>res.data.items);
+        const data:getAllPlaylistsdataType = await axios.get(`https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCjm1A-rBB_6nbP-fuqyIrow&maxResults=15&key=${process.env.GOOGLE_API_KEY}`)
+        .then(res=>res.data);
         return data
     }catch (err){
         console.log(err)
