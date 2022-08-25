@@ -3,6 +3,7 @@ import { useLiveVideosList } from '../api/queries'
 import Footer from '../Components/HomeComponents/Footer'
 import Navbar from '../Components/HomeComponents/Navbar'
 import MiniMeetingsBox from '../Components/YTComponents/miniMeetingsBox'
+import RecentVideo from '../Components/YTComponents/RecentVideo'
 import YoutubeEmbed from '../Components/YTComponents/YoutubeEmbed'
 import useMediaQuery from '../Hooks/useMediaQuery'
 
@@ -22,7 +23,7 @@ const LivePage = () => {
                         <YoutubeEmbed embedId={data[0].videoId} />
                     </div>
                     
-                </>:null}
+                </>:<RecentVideo/>}
                 <div className={Sm?'container w-full md:col-span-1 lg:col-span-2 overflow-y-auto h-[36rem]':' md:col-span-1 lg:col-span-2 overflow-y-auto h-[36rem]'}>
                         <MiniMeetingsBox/>
                 </div>

@@ -28,19 +28,19 @@ const Navbar = () => {
                   <div className=" m-auto">
                       <div className='flex gap-3 text-md tracking-wide font-medium'>
                           <div>
-                            <Link to="/"><p className='  '>A SHORT HISTORY</p></Link>
+                            <Link to="/shorthistory"><p className='  '>A SHORT HISTORY</p></Link>
                           </div>
                           <div>
-                            <Link to="/"><p className=' '>OUR SOCIETY</p></Link>
+                            <Link to="/oursociety"><p className=' '>OUR SOCIETY</p></Link>
                           </div>
                           <div>
-                            <Link to="/"><p className=' '>LOCATIONS</p></Link>
+                            <Link to="/locations"><p className=' '>LOCATIONS</p></Link>
                           </div>
                           <div>
                             <Link to="/meetings"><p>MEETINGS</p></Link>
                           </div>
                           <div>
-                            <Link to="/"><p>GALLERY</p></Link>
+                            <Link to="/gallery"><p>GALLERY</p></Link>
                           </div>
                           <div>
                             <Link to="/live"><p>LIVE</p></Link>
@@ -48,9 +48,9 @@ const Navbar = () => {
                           <div>
                             <Link to="/"><p>CONTACT US</p></Link>
                           </div>
-                          <div>
+                          {/* <div>
                             <Link to='/sunday-school/login'>LOGIN</Link>
-                          </div>
+                          </div> */}
                       </div>
                   </div>
                 :
@@ -118,7 +118,7 @@ const Navbar = () => {
                                     <Link to="/"><p>OUR SOCIETY</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
-                                    <Link to="/"><p>LOCATIONS</p></Link>
+                                    <Link to="/locations"><p>LOCATIONS</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
                                     <Link to="/meetings"><p>MEETINGS</p></Link>
@@ -132,7 +132,9 @@ const Navbar = () => {
                                   <div className='py-4 border-b'>
                                     <Link to="/"><p>CONTACT US</p></Link>
                                   </div>
-
+                                  <div>
+                                    <Link to='/sunday-school/login'>LOGIN</Link>
+                                  </div>
                                     
                                     
                                 </div>

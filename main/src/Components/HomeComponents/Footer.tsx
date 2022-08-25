@@ -11,7 +11,7 @@ export default function Footer(){
     // const bottomColor = "#222831"
     return (
         <>
-          <div className={`border shadow-lg bg-[#393E46]`}>
+          <div className={`border shadow-lg bg-[#393E46] `}>
 
             <footer className="text-center text-lg-start ">
 

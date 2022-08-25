@@ -9,6 +9,10 @@ import SeriesPage from './Pages/seriesPage';
 import MeetingsListPage from './Pages/meetingsListPage';
 import MeetingsPage from './Pages/meetingsPage';
 import LivePage from './Pages/livePage';
+import Locations from './Pages/locations';
+import Gallery from './Pages/Gallery';
+import OurSociety from './Pages/OurSociety';
+import ShortHistory from './Pages/ShortHistory';
 
 
 
@@ -25,6 +29,10 @@ function App() {
             <Route path='/series' element={<MeetingsListPage CurrSermonType="series"/>}></Route>
             <Route path='/series/:playlistId' element={<SeriesPage/>}></Route>
             <Route path='/live' element={<LivePage/>}></Route>
+            <Route path='/locations' element={<Locations/>}></Route>
+            <Route path='/gallery' element={<Gallery/>}></Route>
+            <Route path='/oursociety' element={<OurSociety/>}></Route>
+            <Route path='/Shorthistory' element={<ShortHistory/>}></Route>
           </Routes>
         </Router>
 
