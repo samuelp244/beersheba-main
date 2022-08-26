@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useRecentVideosList } from '../api/queries'
 import Footer from '../Components/HomeComponents/Footer'
@@ -19,12 +19,17 @@ const MeetingsPage = () => {
     const location = useLocation() as unknown as LocationState;
     const navigate = useNavigate() 
     const [videoTitle,setVideoTitle]= useState('');
-    try{
-        const {title} = location.state;
-        setVideoTitle(title)
-    }catch(err){
-        navigate('*')
-    }
+
+    useEffect(()=>{
+
+        try{
+            const {title} = location.state;
+            setVideoTitle(title)
+        }catch(err){
+            navigate('*')
+        }
+    },[location.state,navigate])
+    
     
     const {data} = useRecentVideosList();
     const Sm = useMediaQuery("(max-width: 550px)")

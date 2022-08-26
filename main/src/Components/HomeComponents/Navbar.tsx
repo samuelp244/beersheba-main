@@ -114,10 +114,10 @@ const Navbar = () => {
                             <main className=' flex flex-col text-start gap-4 w-11/12'>
                                 <div className='flex flex-col text-lg font-medium gap-3 '>
                                   <div className='py-4 border-b '>
-                                    <Link to="/"><p>A SHORT HISTORY</p></Link>
+                                    <Link to="/Shorthistory"><p>A SHORT HISTORY</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
-                                    <Link to="/"><p>OUR SOCIETY</p></Link>
+                                    <Link to="/oursociety"><p>OUR SOCIETY</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
                                     <Link to="/locations"><p>LOCATIONS</p></Link>
@@ -126,7 +126,7 @@ const Navbar = () => {
                                     <Link to="/meetings"><p>MEETINGS</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
-                                    <Link to="/"><p>GALLERY</p></Link>
+                                    <Link to="/gallery"><p>GALLERY</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
                                     <Link to="/live"><p>LIVE</p></Link>
