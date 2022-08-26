@@ -1,9 +1,7 @@
 import React from "react";
-// import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-// import fafacebook from "@fortawesome/free-regular-svg-icons"
-// import fafacebook from "@fortawesome/free-regular-svg-icons"
-// import fafacebook from "@fortawesome/free-solid-svg-icons"
-
+import {FaHome,FaRegEnvelope} from "react-icons/fa";
+import {HiOutlinePhone} from "react-icons/hi";
+import { Link } from "react-router-dom";
 export default function Footer(){
     const d = new Date();
     let currentYear = d.getFullYear();
@@ -26,9 +24,7 @@ export default function Footer(){
                         BEERSHEBA
                       </h6>
                       <p>
-                        ############
-                        ####################
-                        #######
+                        
                       </p>
                     </div>
 
@@ -36,18 +32,18 @@ export default function Footer(){
 
 
                     <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                      <h6 className="text-uppercase mb-4 font-weight-bold">Products</h6>
+                      <h6 className="text-uppercase mb-4 font-weight-bold">About us</h6>
                       <p>
-                        <a className="" href="!#">#######</a>
+                        <Link className="" to="/Shorthistory">A Short History</Link>
                       </p>
                       <p>
-                        <a className="" href="!#">########</a>
+                        <Link className="" to="oursociety">Our Society</Link>
                       </p>
                       <p>
-                        <a className="" href="!#">########</a>
+                        <Link className="" to="/gallery">Gallery</Link>
                       </p>
                       <p>
-                        <a className="" href="!#">########</a>
+                        <Link className="" to="/locations">Locations</Link>
                       </p>
                     </div>
 
@@ -57,19 +53,19 @@ export default function Footer(){
 
                     <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                       <h6 className="text-uppercase mb-4 font-weight-bold">
-                        Useful links
+                        Resources
                       </h6>
                       <p>
-                        <a className="" href="!#">######</a>
+                        <Link className="" to="/live">Live</Link>
                       </p>
                       <p>
-                        <a className="" href="!#">#######</a>
+                        <Link className="" to="/series">Series</Link>
                       </p>
                       <p>
-                        <a className="" href="!#">#######</a>
+                        <Link className="" to="/meetings">Meetings</Link>
                       </p>
                       <p>
-                        <a className="" href="!#">#########</a>
+                        {/* <a className="" href="!#">#########</a> */}
                       </p>
                     </div>
 
@@ -79,10 +75,12 @@ export default function Footer(){
 
                     <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                       <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                      <p><i className="fas fa-home mr-3"></i> opp spencers, near boatclub park, Kakinada, Andhra Pradesh 533005</p>
-                      <p><i className="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                      <p><i className="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                      <p><i className="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                      <div className="flex"><span className="p-1"><FaHome size={"20px"}/></span><p className=""> opp spencers, near boatclub park, Kakinada, Andhra Pradesh 533005</p></div>
+                      <div className="flex"><span className="p-1"><FaRegEnvelope size={"20px"}/></span><p className="px-1">info@gmail.com</p></div>
+                      <div className="flex"><span className="p-1"><HiOutlinePhone size={"20px"}/></span><p className="px-1">+ 01 234 567 88</p></div>
+                      {/* <p><i className="fas fa-envelope mr-3"></i> info@gmail.com</p> */}
+                      {/* <p><i className="fas fa-phone mr-3"></i> + 01 234 567 88</p> */}
+                      {/* <p><i className="fas fa-print mr-3"></i> + 01 234 567 89</p> */}
                     </div>
 
                   </div>
@@ -108,7 +106,7 @@ export default function Footer(){
 
 
 
-                    <div className="faf-buttons col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                    {/* <div className="faf-buttons col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
 
                       <a className="btn btn-outline-light btn-floating m-1 " role="button" href="!#"><i className="fab fa-facebook-f "></i></a>
 
@@ -120,7 +118,7 @@ export default function Footer(){
 
 
                       <a className="btn btn-outline-light btn-floating m-1 " role="button" href="!#"><i className="fab fa-instagram"></i></a>
-                    </div>
+                    </div> */}
 
                   </div>
                 </section>
