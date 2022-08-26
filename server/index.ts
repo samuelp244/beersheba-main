@@ -5,7 +5,7 @@ import path from 'path';
 import 'dotenv/config'
 import { PrayerReqHandler } from './controller/PrayerReqController';
 import { FrontEndHandler } from './controller/FrontEndHandler';
-import { YTDataHandler } from './controller/yTDataController';
+import { YTDataHandler } from './controller/YTDataController';
 import { getRecentData,getAllData, getPlayistData } from './api/Requests';
 
 import schedule from 'node-schedule'
