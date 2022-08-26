@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const AboutBox = () => {
   return (
@@ -11,7 +12,7 @@ const AboutBox = () => {
 
       </div>
       <div className='flex justify-end'>
-          <button className=' text-center font-medium text-blue-500 border-2 border-blue-500  rounded-md p-1 px-3  px-auto  transition duration-500 hover:scale-105' >LEARN MORE</button>
+          <Link to='/Shorthistory'><button className=' text-center font-medium text-blue-500 border-2 border-blue-500  rounded-md p-1 px-3  px-auto  transition duration-500 hover:scale-105' >LEARN MORE</button></Link>
       </div>
     </div>
   )

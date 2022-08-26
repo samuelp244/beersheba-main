@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link, useParams, useLocation } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useRecentVideosList } from '../api/queries'
 import Footer from '../Components/HomeComponents/Footer'
 import Navbar from '../Components/HomeComponents/Navbar'
@@ -17,9 +17,19 @@ const MeetingsPage = () => {
     
     let {videoId} = useParams()
     const location = useLocation() as unknown as LocationState;
-    const {title} = location.state;
+    const navigate = useNavigate() 
+    const [videoTitle,setVideoTitle]= useState('');
+    try{
+        const {title} = location.state;
+        setVideoTitle(title)
+    }catch(err){
+        navigate('*')
+    }
+    
     const {data} = useRecentVideosList();
     const Sm = useMediaQuery("(max-width: 550px)")
+    
+    
 
   return (
     <div className='grid grid-cols-1 gap-4'>
@@ -27,7 +37,7 @@ const MeetingsPage = () => {
             <main className={Sm?'w-full':'container w-full lg:max-w-6xl md:max-w-4xl mx-auto'}>
                 <div className='grid gap-4 md:grid-cols-3 lg:grid-cols-7'>
                     <div className={Sm?' container md:col-span-3 lg:col-span-7':'md:col-span-3 lg:col-span-7'}>
-                        <p className='text-xl font-serif'>{title}</p>
+                        <p className='text-xl font-serif'>{videoTitle}</p>
                     </div>
                     <div className='md:col-span-2 lg:col-span-5'>
                         <YoutubeEmbed embedId={videoId? videoId:''} />

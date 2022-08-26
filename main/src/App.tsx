@@ -13,6 +13,7 @@ import Locations from './Pages/locations';
 import Gallery from './Pages/Gallery';
 import OurSociety from './Pages/OurSociety';
 import ShortHistory from './Pages/ShortHistory';
+import PageNotFound from './Pages/PageNotFound';
 
 
 
@@ -33,6 +34,7 @@ function App() {
             <Route path='/gallery' element={<Gallery/>}></Route>
             <Route path='/oursociety' element={<OurSociety/>}></Route>
             <Route path='/Shorthistory' element={<ShortHistory/>}></Route>
+            <Route path='*' element={<PageNotFound/>}></Route>
           </Routes>
         </Router>
 

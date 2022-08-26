@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAllPlaylistsData } from '../api/queries'
 // import { getPlaylistItems } from '../api/apiCalls'
 import Footer from '../Components/HomeComponents/Footer'
@@ -32,18 +32,23 @@ const SeriesPage = () => {
     setCurrTitle(title)
   }
   const {data} = useAllPlaylistsData();
+  const navigate = useNavigate()
+
   useEffect(()=>{
     if(data){
       const playlist = data?.filter(obj=>obj.PlaylistId===playlistId)[0]
-      setPlaylistItems(playlist.items);
-      if(PlaylistVideoId===undefined) setCurrItemId(playlist.items[0].snippet.videoId)
-      const temmpArray = playlist.items.filter((obj)=>obj.snippet.videoId===currItemId)
-      setCurrTitle(temmpArray[0]?.snippet.title)
+      try{
+        setPlaylistItems(playlist.items);
+        if(PlaylistVideoId===undefined) setCurrItemId(playlist.items[0].snippet.videoId)
+        const temmpArray = playlist.items.filter((obj)=>obj.snippet.videoId===currItemId)
+        setCurrTitle(temmpArray[0]?.snippet.title)
+      }catch(err){
+        navigate('*')
+      }
     }
-    
     window.scrollTo(0, 0);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  
+  },[playlistId,PlaylistVideoId,currItemId,data,navigate])
 
   const Sm = useMediaQuery("(max-width: 550px)")
   return (

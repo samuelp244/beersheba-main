@@ -1,15 +1,15 @@
 import { AllVideosListDataType, mongoPlaylistdata } from "../types/apiResponseTypes";
 import { ytfetchData } from "./YTtypes";
-
+import axios from "axios";
 
 
 
 // export const YOUTUBE_API_KEY =  process.env.REACT_APP_GOOGLE_API_KEY
 export const BASE_URL = 'http://localhost:1337'
-
+// 'http://localhost:1337'
 const getRecentdata = async()=>{
-    const data:ytfetchData[] = await fetch(`${BASE_URL}/ytrecentdata`)
-    .then(res=>res.json())
+    const data:ytfetchData[] = await axios.get(`${BASE_URL}/api/v1/ytrecentdata`)
+    .then(res=>res.data)
     return data.sort((first, second) => { return new Date(second.snippet.publishTime).getTime() - new Date(first.snippet.publishTime).getTime()});
 }
 
@@ -33,15 +33,15 @@ export const fetchLiveData = async () =>{
 } 
 
 export const getAllVideosList = async () =>{
-    const data:AllVideosListDataType = await fetch(`${BASE_URL}/getAllData`)
-    .then(res=>res.json());
+    const data:AllVideosListDataType = await axios.get(`${BASE_URL}/api/v1/getAllData`)
+    .then(res=>res.data);
     return data
 }
 
 
 export const getAllPlaylistsData = async () =>{
-    const data:mongoPlaylistdata[] = await fetch(`${BASE_URL}/getplaylistdata`)
-    .then(res=>res.json());
+    const data:mongoPlaylistdata[] = await axios.get(`${BASE_URL}/api/v1/getplaylistdata`)
+    .then(res=>res.data);
     return data.sort((first, second) => { return new Date(second.publishedAt).getTime() - new Date(first.publishedAt).getTime()});
 }
 

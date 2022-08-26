@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
+// import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
 
 const ChurchMap = () => {
     // const [churches,setChurches] = useState([]);
@@ -27,7 +27,7 @@ const ChurchMap = () => {
     }
     return (
     <>
-        <div  >
+        {/* <div  >
             <GoogleMap
             zoom={13.5} 
             center={{ lat: 16.991497447564285, lng: 82.24159924373555 }} 
@@ -37,7 +37,7 @@ const ChurchMap = () => {
             <MarkerWithInfoWindow position={{lat:16.991497447564285,lng:82.24159924373555}} church_name = "Beersheba"/>
             <MarkerWithInfoWindow position={{lat: 17.010987617672033, lng: 82.23527481285089}} church_name = "House of Beatitudes"/>
             </GoogleMap>
-        </div>
+        </div> */}
     </>
         // <>
         //     <div className='mapPage'>
@@ -100,21 +100,21 @@ interface infoMarkerProps{
 
 }
 
-function MarkerWithInfoWindow(props:infoMarkerProps){
-    const [isOpen,setIsOpen] = useState(false);
-    const onToggleOpen=()=>{
-        setIsOpen(!isOpen)
-    }
+// function MarkerWithInfoWindow(props:infoMarkerProps){
+//     const [isOpen,setIsOpen] = useState(false);
+//     const onToggleOpen=()=>{
+//         setIsOpen(!isOpen)
+//     }
     
-    return (
-        <Marker position={props.position} onClick={()=>{onToggleOpen()}} >
-            {isOpen && <InfoWindow onCloseClick={()=>{onToggleOpen()}} >
-                <div>
-                    <h3>{props.church_name}</h3>
-                    <p>address</p>
-                    <button>LEARN MORE</button>
-                </div>
-            </InfoWindow> }
-        </Marker>
-    );
-}
+//     return (
+//         <Marker position={props.position} onClick={()=>{onToggleOpen()}} >
+//             {isOpen && <InfoWindow onCloseClick={()=>{onToggleOpen()}} >
+//                 <div>
+//                     <h3>{props.church_name}</h3>
+//                     <p>address</p>
+//                     <button>LEARN MORE</button>
+//                 </div>
+//             </InfoWindow> }
+//         </Marker>
+//     );
+// }

@@ -15,7 +15,7 @@ const ThreeUpcomingVideos = () => {
                 const {title, thumbnails} = snippet;
                 return (
                     <div className='p-1' key={videoId}>
-                        <Link className='flex' to={`/meetings/${videoId}`}> 
+                        <Link className='flex' to={`/meetings/${videoId}`} state={{title:title}}> 
                             <img className='w-[72px] h-[54px] my-auto' src={thumbnails.default.url}  alt="..."/>
                             <p className=' meetingsBoxtext p-1'>{title}</p>
                         </Link>

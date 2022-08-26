@@ -36,7 +36,7 @@ const RecentVideosList = () => {
         // console.log('hi')
         // console.log(prevPageid)
         if(prevPageid){
-            const res:AllVideosListDataType = await axios.get(`${BASE_URL}/getAllData?prevPageToken=${prevPageid}`)
+            const res:AllVideosListDataType = await axios.get(`${BASE_URL}/api/v1/getAllData?prevPageToken=${prevPageid}`)
             .then(res=>res.data)
             // console.log(res)
            
@@ -86,8 +86,9 @@ const RecentVideosList = () => {
 
 
     const nextButtonHandler = async ()=>{
+        console.log(nextPageid)
             if(nextPageid){
-                const res:AllVideosListDataType = await axios.get(`${BASE_URL}/getAllData?nextPageToken=${nextPageid}`)
+                const res:AllVideosListDataType = await axios.get(`${BASE_URL}/api/v1/getAllData?nextPageToken=${nextPageid}`)
                 .then(res=>res.data)
              
                 if(res.nextPageToken){

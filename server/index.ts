@@ -22,16 +22,17 @@ schedule.scheduleJob('0 * * * *',()=>{
     YTDataHandler();
 })
 
+app.get('/api/v1/ytrecentdata',getRecentData)
 
-// app.get('/*',FrontEndHandler)
+app.get('/api/v1/getAllData',getAllData)
 
-app.get('/ytrecentdata',getRecentData)
-
-app.get('/getAllData',getAllData)
-
-app.get('/getplaylistdata',getPlayistData)
+app.get('/api/v1/getplaylistdata',getPlayistData)
 
 app.post('/api/v1/sendPrayerRequest',PrayerReqHandler)
+
+// app.get('*',FrontEndHandler)
+
+
 
 app.listen(1337,()=>{
     console.log('app started at 1337')

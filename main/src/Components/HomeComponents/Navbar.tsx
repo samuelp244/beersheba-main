@@ -84,7 +84,7 @@ const Navbar = () => {
                 </>:null}
         </div>
       </header>
-      <Drawer
+            <Drawer
                 anchor={md? 'left':'top'}
                 open={navbarOpened}
                 onClose={() => setNavbarOpened((o:boolean) => !o)}
@@ -100,7 +100,9 @@ const Navbar = () => {
                                     title={title}
                                 />
                             </div>
-                            {md?null:<div>
+                            {md?<div>
+                                <img src={logoImage} className="h w-24 opacity-0" alt="Logo.png"/>
+                            </div>:<div>
                                 <img src={logoImage} className="h w-24" alt="Logo.png"/>
                             </div>}
                             <div className='my-auto'>

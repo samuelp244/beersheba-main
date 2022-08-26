@@ -7,7 +7,7 @@ const UnderConstructionPage = () => {
       <div className="z-50 flex flex-col justify-center items-center text-black w-full h-full gap-2 opacity-60">
           {/* <span className="text-bold">LOGO</span> */}
           <h1 className="text-6xl"><b>Coming</b> Soon!</h1>
-          <p>Stay tuned for something amazing!!!</p>
+          {/* <p>Stay tuned for something amazing!!!</p> */}
         </div>
   
 </div>
