@@ -75,9 +75,9 @@ export default function Footer(){
 
                     <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                       <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                      <div className="flex"><span className="p-1"><FaHome size={"20px"}/></span><p className=""> opp spencers, near boatclub park, Kakinada, Andhra Pradesh 533005</p></div>
-                      <div className="flex"><span className="p-1"><FaRegEnvelope size={"20px"}/></span><p className="px-1">info@gmail.com</p></div>
-                      <div className="flex"><span className="p-1"><HiOutlinePhone size={"20px"}/></span><p className="px-1">+ 01 234 567 88</p></div>
+                      <div className="flex"><span className="p-1"><FaHome size={"20px"}/></span><p className="">BEERSHEBA house of prayer, opp spencers, near boatclub park, Kakinada, Andhra Pradesh 533005</p></div>
+                      <div className="flex"><span className="p-1"><FaRegEnvelope size={"20px"}/></span><p className="px-1">beershebakkd@gmail.com</p></div>
+                      <div className="flex"><span className="p-1"><HiOutlinePhone size={"20px"}/></span><p className="px-1">+ 91 7799383373</p></div>
                       {/* <p><i className="fas fa-envelope mr-3"></i> info@gmail.com</p> */}
                       {/* <p><i className="fas fa-phone mr-3"></i> + 01 234 567 88</p> */}
                       {/* <p><i className="fas fa-print mr-3"></i> + 01 234 567 89</p> */}
