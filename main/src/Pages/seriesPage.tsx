@@ -68,7 +68,7 @@ const SeriesPage = () => {
                       <p className='p-1 text-xl font-serif'>Meetings in this Series</p>
                   </div>
                   <ul className='grid gap-2'>
-                    {playlistItems?.map(item=>{
+                    {playlistItems?.sort((first, second) => { return new Date(first.snippet.publishedAt).getTime() - new Date(second.snippet.publishedAt).getTime()}).map(item=>{
                       const { _id, snippet} = item;
                       const {title, thumbnails, videoId} = snippet;
                       return (
