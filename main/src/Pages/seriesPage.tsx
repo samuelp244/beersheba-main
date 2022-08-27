@@ -27,6 +27,7 @@ const SeriesPage = () => {
   const [currTitle,setCurrTitle] = useState("")
 
   const setPlayListIdHandler =(e:any,id:string,title:string)=>{
+    console.log(id,title)
     e.preventDefault();
     setCurrItemId(id);
     setCurrTitle(title)
@@ -38,8 +39,8 @@ const SeriesPage = () => {
     if(data){
       const playlist = data?.filter(obj=>obj.PlaylistId===playlistId)[0]
       try{
-        setPlaylistItems(playlist.items);
-        if(PlaylistVideoId===undefined) setCurrItemId(playlist.items[0].snippet.videoId)
+        setPlaylistItems(playlist.items.sort((first, second) => { return new Date(first.snippet.publishedAt).getTime() - new Date(second.snippet.publishedAt).getTime()}));
+        if(PlaylistVideoId===undefined) setCurrItemId(playlist.items.sort((first, second) => { return new Date(first.snippet.publishedAt).getTime() - new Date(second.snippet.publishedAt).getTime()})[0].snippet.videoId)
         const temmpArray = playlist.items.filter((obj)=>obj.snippet.videoId===currItemId)
         setCurrTitle(temmpArray[0]?.snippet.title)
       }catch(err){
@@ -48,7 +49,8 @@ const SeriesPage = () => {
     }
     window.scrollTo(0, 0);
   
-  },[playlistId,PlaylistVideoId,currItemId,data,navigate])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[playlistId,PlaylistVideoId,data,navigate])
 
   const Sm = useMediaQuery("(max-width: 550px)")
   return (
@@ -68,7 +70,7 @@ const SeriesPage = () => {
                       <p className='p-1 text-xl font-serif'>Meetings in this Series</p>
                   </div>
                   <ul className='grid gap-2'>
-                    {playlistItems?.sort((first, second) => { return new Date(first.snippet.publishedAt).getTime() - new Date(second.snippet.publishedAt).getTime()}).map(item=>{
+                    {playlistItems?.map(item=>{
                       const { _id, snippet} = item;
                       const {title, thumbnails, videoId} = snippet;
                       return (
