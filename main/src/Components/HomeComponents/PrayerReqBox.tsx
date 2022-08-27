@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Modal } from '@mantine/core'
 import axios from 'axios'
+import { BASE_URL } from '../../api/apiCalls'
 
 const PrayerReqBox = () => {
   const [prayerModalOpened,setPrayerModalOpened] = useState(false)
@@ -23,7 +24,7 @@ const PrayerReqBox = () => {
 
   const submitHandler = async (e:any)=>{
     e.preventDefault();
-    const res = await axios.post('/api/v1/sendPrayerRequest',PrayerDetails)
+    const res = await axios.post(`${BASE_URL}/api/v1/sendPrayerRequest`,PrayerDetails)
     if(res.data.message==="message sent"){
       setPrayerModalOpened(false)
       setPrayerDetails(initialValues)

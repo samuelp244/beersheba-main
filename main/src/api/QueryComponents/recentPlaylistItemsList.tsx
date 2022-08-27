@@ -24,7 +24,7 @@ const RecentPlaylistItemsList = (props:RecentPlaylistItemsListProps) => {
   return (
     <div className='grid grid-cols-2 gap-3'>
     {
-        data?.items.slice(0,6).map(i=>{
+        data?.items.sort((first, second) => { return new Date(first.snippet.publishedAt).getTime() - new Date(second.snippet.publishedAt).getTime()}).slice(0,6).map(i=>{
             const {_id, snippet} = i;
             const {title, videoId} = snippet;
             return (

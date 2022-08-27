@@ -21,7 +21,7 @@ const TimingsBox = () => {
                         <h5 className='text-xs font-medium text-gray-500'>Tuesday</h5>
                     </div>
                     <div className='font-bold text-sm pb-2'>
-                        <p className=''>Sisters Meeting - 10:30 AM</p>
+                        <p className=''>Sisters Meeting - 2:00 PM</p>
                         <p>Bible Study - 7:00 PM</p>
                     </div>
                 </div>
