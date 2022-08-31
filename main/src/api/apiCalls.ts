@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 // export const YOUTUBE_API_KEY =  process.env.REACT_APP_GOOGLE_API_KEY
-export const BASE_URL = ''
+export const BASE_URL = 'http://localhost:1337'
 // 'http://localhost:1337'
 const getRecentdata = async()=>{
     const data:ytfetchData[] = await axios.get(`${BASE_URL}/api/v1/ytrecentdata`)

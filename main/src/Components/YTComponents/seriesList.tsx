@@ -6,9 +6,9 @@ const SeriesList = () => {
     const { data } = useAllPlaylistsData()
 
     return (
-        <>
+        <div className=' p-3 rounded-[10px]  grid gap-3 bg-white'>
                 <div className=' px-3'>
-                    <p>Results 1 - {data?.length} of {data?.length}</p>
+                    <p className=' text-sm  '>Results 1 - {data?.length} of {data?.length}</p>
                 </div>
                 <ul className='grid gap-3 pt-3'>
                 {
@@ -27,7 +27,7 @@ const SeriesList = () => {
                 }
                 </ul>
                 <div className="clearfix"></div>
-        </>
+        </div>
     )
 }
 
