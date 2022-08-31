@@ -22,15 +22,19 @@ schedule.scheduleJob('0 * * * *',()=>{
     YTDataHandler();
 })
 
-app.get('/api/v1/ytrecentdata',getRecentData)
+// app.get('/api/v1/ytrecentdata',getRecentData)
 
-app.get('/api/v1/getAllData',getAllData)
+// app.get('/api/v1/getAllData',getAllData)
 
-app.get('/api/v1/getplaylistdata',getPlayistData)
+// app.get('/api/v1/getplaylistdata',getPlayistData)
 
-app.post('/api/v1/sendPrayerRequest',PrayerReqHandler)
+// app.post('/api/v1/sendPrayerRequest',PrayerReqHandler)
 
-app.get('*',FrontEndHandler)
+app.get('/api/hello',(req:Request,res:Response)=>{
+    res.send('hello')
+})
+
+// app.get('*',FrontEndHandler)
 
 
 
