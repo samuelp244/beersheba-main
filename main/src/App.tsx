@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
+  Navigate,
 Routes,
 Route } from 'react-router-dom'
 import Main from './Pages/main';
@@ -34,7 +35,9 @@ function App() {
             <Route path='/gallery' element={<Gallery/>}></Route>
             <Route path='/oursociety' element={<OurSociety/>}></Route>
             <Route path='/Shorthistory' element={<ShortHistory/>}></Route>
+            <Route path='/index.html' element={<Navigate to='/' replace/>}></Route>
             <Route path='*' element={<PageNotFound/>}></Route>
+            
           </Routes>
         </Router>
 
