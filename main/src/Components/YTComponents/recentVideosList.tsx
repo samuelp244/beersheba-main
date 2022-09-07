@@ -134,6 +134,7 @@ const RecentVideosList = () => {
                     return (
                         <div className="   px-3 pb-2 " key={_id} >
                             <div className='' >
+                                
                                 <Link to={`/meetings/${resourceId?.videoId}`} state={{title:title}}><p className='mb-0 py-3'>{title}</p></Link>
                             </div>
                             

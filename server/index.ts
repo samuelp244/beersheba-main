@@ -30,7 +30,7 @@ app.get('/api/v1/getplaylistdata',getPlayistData)
 
 app.post('/api/v1/sendPrayerRequest',PrayerReqHandler)
 
-app.get('*',FrontEndHandler)
+// app.get('*',FrontEndHandler)
 
 
 

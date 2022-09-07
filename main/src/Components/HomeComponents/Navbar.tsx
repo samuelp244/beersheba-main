@@ -45,9 +45,9 @@ const Navbar = () => {
                           <div>
                             <Link to="/live"><p>LIVE</p></Link>
                           </div>
-                          <div>
+                          {/* <div>
                             <Link to="/"><p>CONTACT US</p></Link>
-                          </div>
+                          </div> */}
                           {/* <div>
                             <Link to='/sunday-school/login'>LOGIN</Link>
                           </div> */}
@@ -131,12 +131,12 @@ const Navbar = () => {
                                   <div className='py-4 border-b'>
                                     <Link to="/live"><p>LIVE</p></Link>
                                   </div>
-                                  <div className='py-4 border-b'>
+                                  {/* <div className='py-4 border-b'>
                                     <Link to="/"><p>CONTACT US</p></Link>
-                                  </div>
-                                  <div>
+                                  </div> */}
+                                  {/* <div>
                                     <Link to='/sunday-school/login'>LOGIN</Link>
-                                  </div>
+                                  </div> */}
                                     
                                     
                                 </div>

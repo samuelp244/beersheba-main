@@ -5,11 +5,13 @@ import axios from "axios";
 
 
 // export const YOUTUBE_API_KEY =  process.env.REACT_APP_GOOGLE_API_KEY
-export const BASE_URL = ''
+export const BASE_URL = 'https://beershebakkd.org'
 // 'http://localhost:1337'
 const getRecentdata = async()=>{
     const data:ytfetchData[] = await axios.get(`${BASE_URL}/api/v1/ytrecentdata`)
-    .then(res=>res.data)
+    .then(res=>{
+        // console.log(res);
+        return res.data})
     return data.sort((first, second) => { return new Date(second.snippet.publishTime).getTime() - new Date(first.snippet.publishTime).getTime()});
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { usePlaylistItems } from '../queries';
-
+import {AiOutlinePlayCircle} from 'react-icons/ai'
 interface RecentPlaylistItemsListProps{
     playlistId:string
 }
@@ -29,7 +29,9 @@ const RecentPlaylistItemsList = (props:RecentPlaylistItemsListProps) => {
             const {title, videoId} = snippet;
             return (
                 <div className='' key={_id}>
-                    <a href="/#" onClick={(e)=>navigateToSeriesPage(e,videoId)} target="_blank" rel="noopener noreferrer" >
+                    
+                    <a href="/#" className='flex' onClick={(e)=>navigateToSeriesPage(e,videoId)} target="_blank" rel="noopener noreferrer" >
+                        <span className='pt-1 pr-1'><AiOutlinePlayCircle size={"12px"}  /></span>
                         <p className=' truncate '>{title}</p>
                     </a>
                 </div>

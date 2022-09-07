@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import { getAllPlaylistsData } from '../../api/apiCalls';
 import { useAllPlaylistsData } from '../../api/queries';
 // import { PlaylistsData } from '../../types/interfacesAndTypes';
-
+import {AiOutlinePlayCircle} from 'react-icons/ai'
 const AllPlaylistBox = () => {
     const { data } = useAllPlaylistsData()
     
@@ -21,7 +21,11 @@ const AllPlaylistBox = () => {
                         return (
                             <div className='' key={PlaylistId}>
                                 <Link to={`/series/${PlaylistId}`} >
-                                    <p className=' '>{PlaylistTitle}</p>
+                                    <div className='flex '>
+                                        <span className='pt-1 pr-1'><AiOutlinePlayCircle size={"12px"}  /></span>
+                                        <p className=' '>{PlaylistTitle}</p>
+                                    </div>
+                                    
                                 </Link>
                             </div>
                         );
