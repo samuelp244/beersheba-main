@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { useLoadScript,  } from "@react-google-maps/api";
 // import {Link} from "react-router-dom";
 // import churhDetails from '../Components/mapComponents/churchMapParams.json'
-import Navbar from '../Components/HomeComponents/Navbar';
-// import ChurchMap from '../Components/mapComponents/ChurchMap';
-import Footer from '../Components/HomeComponents/Footer';
+// import Navbar from '../Components/HomeComponents/Navbar';
+// // import ChurchMap from '../Components/mapComponents/ChurchMap';
+// import Footer from '../Components/HomeComponents/Footer';
 import UnderConstructionPage from '../Components/HomeComponents/underConstructionPage';
 
 export default function Locations(){
@@ -14,10 +14,13 @@ export default function Locations(){
 
     // if(!isLoaded) return <div>Loading..</div>
     // console.log(isLoaded)
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+      },[])
     return (
         <>
         <div className='grid grid-cols-1'>
-            <Navbar />
+            {/* <Navbar /> */}
             <UnderConstructionPage/>
             {/* <main className='w-full h-screen'>
                 <div className=''>
@@ -46,7 +49,7 @@ export default function Locations(){
                     </div>
                 </div>
             </main> */}
-            <Footer />
+            {/* <Footer /> */}
         </div>
         </>
         

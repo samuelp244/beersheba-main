@@ -2,8 +2,8 @@ import React from 'react'
 import AboutBox from '../Components/HomeComponents/AboutBox'
 import AddressBox from '../Components/HomeComponents/AddressBox'
 import BeershebaCarousel from '../Components/HomeComponents/Carousel'
-import Footer from '../Components/HomeComponents/Footer'
-import Navbar from '../Components/HomeComponents/Navbar'
+// import Footer from '../Components/HomeComponents/Footer'
+// import Navbar from '../Components/HomeComponents/Navbar'
 import PrayerReqBox from '../Components/HomeComponents/PrayerReqBox'
 import TimingsBox from '../Components/HomeComponents/TimingsBox'
 import AllPlaylistBox from '../Components/YTComponents/AllPlaylistBox'
@@ -16,8 +16,8 @@ const Main = () => {
   return (
     <>
     {/* #6a9eec */}
-    <div className='grid grid-cols-1 gap-4 bg-[#F9F7F7]'>
-      <Navbar />
+    <div className='grid grid-cols-1 gap-4 bg-[#F9F7F7] py-4 '>
+      {/* <Navbar /> */}
         <main className=' w-full  lg:max-w-6xl md:max-w-4xl  mx-auto '>
           <div className=''>
             <BeershebaCarousel/>
@@ -54,7 +54,7 @@ const Main = () => {
             </div>
           </div>
         </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
     </>
   )

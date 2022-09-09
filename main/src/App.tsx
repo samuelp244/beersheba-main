@@ -13,8 +13,10 @@ import LivePage from './Pages/livePage';
 import Locations from './Pages/locations';
 import Gallery from './Pages/Gallery';
 import OurSociety from './Pages/OurSociety';
-import ShortHistory from './Pages/ShortHistory';
+import AboutUs from './Pages/AboutUs';
 import PageNotFound from './Pages/PageNotFound';
+import Navbar from './Components/HomeComponents/Navbar';
+import Footer from './Components/HomeComponents/Footer';
 
 
 
@@ -24,6 +26,7 @@ function App() {
   return (
     <>
         <Router>
+          <Navbar/>
           <Routes>
             <Route path='/' element={<Main />}></Route>
             <Route path='/meetings' element={<MeetingsListPage CurrSermonType="meetings"/>}></Route>
@@ -34,11 +37,12 @@ function App() {
             <Route path='/locations' element={<Locations/>}></Route>
             <Route path='/gallery' element={<Gallery/>}></Route>
             <Route path='/oursociety' element={<OurSociety/>}></Route>
-            <Route path='/Shorthistory' element={<ShortHistory/>}></Route>
+            <Route path='/about' element={<AboutUs/>}></Route>
             <Route path='/index.html' element={<Navigate to='/' replace/>}></Route>
             <Route path='*' element={<PageNotFound/>}></Route>
             
           </Routes>
+          <Footer/>
         </Router>
 
     </>

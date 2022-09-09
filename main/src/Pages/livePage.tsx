@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useLiveVideosList } from '../api/queries'
-import Footer from '../Components/HomeComponents/Footer'
-import Navbar from '../Components/HomeComponents/Navbar'
+// import Footer from '../Components/HomeComponents/Footer'
+// import Navbar from '../Components/HomeComponents/Navbar'
 import MiniMeetingsBox from '../Components/YTComponents/miniMeetingsBox'
 import RecentVideo from '../Components/YTComponents/RecentVideo'
 import YoutubeEmbed from '../Components/YTComponents/YoutubeEmbed'
@@ -10,9 +10,13 @@ import useMediaQuery from '../Hooks/useMediaQuery'
 const LivePage = () => {
     const Sm = useMediaQuery("(max-width: 550px)")
     const {data} = useLiveVideosList()
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+      },[])
+      
   return (
-    <div className='grid grid-cols-1 gap-4'>
-        <Navbar/>
+    <div className='grid grid-cols-1 gap-4 py-4'>
+        {/* <Navbar/> */}
         <main className={Sm?'w-full':'container w-full lg:max-w-6xl md:max-w-4xl mx-auto'}>
             <div className='grid gap-4 md:grid-cols-3 lg:grid-cols-7'>
                 {data!==undefined && data.length!==0 ? <>
@@ -29,7 +33,7 @@ const LivePage = () => {
                 </div>
             </div>
         </main>
-        <Footer/>
+        {/* <Footer/> */}
     </div>
   )
 }

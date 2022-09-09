@@ -1,6 +1,6 @@
 import React from 'react'
-import slide1 from "../../assets/home-slidebar-pictures/firenew.png"
-import slide2 from "../../assets/home-slidebar-pictures/lordnew.png";
+import slide1 from "../../assets/home-slidebar-pictures/image-2.jpg"
+import slide2 from "../../assets/home-slidebar-pictures/lord.JPG";
 import slide3 from "../../assets/home-slidebar-pictures/livenew.png";
 import useMediaQuery from '../../Hooks/useMediaQuery';
 import { Link } from 'react-router-dom';

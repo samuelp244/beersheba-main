@@ -1,6 +1,6 @@
-import React from 'react'
-import Footer from '../Components/HomeComponents/Footer'
-import Navbar from '../Components/HomeComponents/Navbar'
+import React, { useEffect } from 'react'
+// import Footer from '../Components/HomeComponents/Footer'
+// import Navbar from '../Components/HomeComponents/Navbar'
 // import UnderConstructionPage from '../Components/HomeComponents/underConstructionPage'
 import image1 from '../assets/members/M.BALASUNDARARAU.jpeg'
 import image2 from '../assets/members/M.DAVIDSUDHEER.jpeg' 
@@ -17,9 +17,12 @@ import SocietyMember from '../Components/HomeComponents/SocietyMember'
 
 const OurSociety = () => {
   // const Sm = useMediaQuery("(max-width: 550px)")
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[])
   return (
-    <div className='grid grid-cols-1 gap-4'>
-    <Navbar/>
+    <div className='grid grid-cols-1 gap-4 py-4'>
+    {/* <Navbar/> */}
       <main className={'container w-full lg:max-w-6xl md:max-w-4xl mx-auto '}>
         <div className='grid gap-4'>
           <div className='rounded-[10px] shadow-lg md:p-3 '>
@@ -51,7 +54,7 @@ const OurSociety = () => {
           </div>
         </div>
       </main>
-    <Footer/>
+    {/* <Footer/> */}
     </div>
   )
 }

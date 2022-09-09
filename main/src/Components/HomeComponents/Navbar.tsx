@@ -18,7 +18,7 @@ const Navbar = () => {
           <div className={MaxMd?'flex justify-between mx-2':'flex justify-between mx-4 '}>
                 {md?
                   <Link to="/">
-                    <img src={logoImage} className="h w-24" alt="Logo.png"/>
+                    <img src={logoImage} className="h w-24 p-1" alt="Logo.png"/>
                   </Link>
                 :null}
                
@@ -26,9 +26,9 @@ const Navbar = () => {
                 {lg?
 
                   <div className=" m-auto">
-                      <div className='flex gap-3 text-md tracking-wide font-medium'>
+                      <div className='flex gap-4 text-md tracking-wide font-medium'>
                           <div>
-                            <Link to="/shorthistory"><p className='  '>A SHORT HISTORY</p></Link>
+                            <Link to="/about"><p className='  '>ABOUT US</p></Link>
                           </div>
                           <div>
                             <Link to="/oursociety"><p className=' '>OUR SOCIETY</p></Link>
@@ -42,7 +42,7 @@ const Navbar = () => {
                           <div>
                             <Link to="/gallery"><p>GALLERY</p></Link>
                           </div>
-                          <div>
+                          <div className=''>
                             <Link to="/live"><p>LIVE</p></Link>
                           </div>
                           {/* <div>
@@ -114,22 +114,22 @@ const Navbar = () => {
                             <main className=' flex flex-col text-start gap-4 w-11/12'>
                                 <div className='flex flex-col text-lg font-medium gap-3 '>
                                   <div className='py-4 border-b '>
-                                    <Link to="/Shorthistory"><p>A SHORT HISTORY</p></Link>
+                                    <Link to="/about" onClick={()=>{setNavbarOpened(false)}}><p>ABOUT US</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
-                                    <Link to="/oursociety"><p>OUR SOCIETY</p></Link>
+                                    <Link to="/oursociety" onClick={()=>{setNavbarOpened(false)}}><p>OUR SOCIETY</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
-                                    <Link to="/locations"><p>LOCATIONS</p></Link>
+                                    <Link to="/locations" onClick={()=>{setNavbarOpened(false)}}><p>LOCATIONS</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
-                                    <Link to="/meetings"><p>MEETINGS</p></Link>
+                                    <Link to="/meetings" onClick={()=>{setNavbarOpened(false)}}><p>MEETINGS</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
-                                    <Link to="/gallery"><p>GALLERY</p></Link>
+                                    <Link to="/gallery" onClick={()=>{setNavbarOpened(false)}}><p>GALLERY</p></Link>
                                   </div>
                                   <div className='py-4 border-b'>
-                                    <Link to="/live"><p>LIVE</p></Link>
+                                    <Link to="/live" onClick={()=>{setNavbarOpened(false)}}><p>LIVE</p></Link>
                                   </div>
                                   {/* <div className='py-4 border-b'>
                                     <Link to="/"><p>CONTACT US</p></Link>

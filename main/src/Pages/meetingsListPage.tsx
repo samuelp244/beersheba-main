@@ -1,7 +1,7 @@
 import { SelectChangeEvent } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import Footer from '../Components/HomeComponents/Footer';
-import Navbar from '../Components/HomeComponents/Navbar';
+// import Footer from '../Components/HomeComponents/Footer';
+// import Navbar from '../Components/HomeComponents/Navbar';
 import FilterButton from '../Components/YTComponents/FilterButton';
 // import MeetingsFilter from '../Components/YTComponents/meetingsFilter';
 import MiniMeetingsBox from '../Components/YTComponents/miniMeetingsBox';
@@ -32,8 +32,8 @@ const MeetingsListPage = (props:MeetingsListProps) => {
     
     return (
     <>
-    <div className='grid grid-cols-1 gap-4'>
-    <Navbar />
+    <div className='grid grid-cols-1 gap-4 py-4'>
+    {/* <Navbar /> */}
         <main className='container w-full  lg:max-w-6xl md:max-w-4xl  mx-auto '>
         <div className={isMd?'grid place-content-center gap-4 md:grid-cols-3 lg:grid-cols-7 ':'grid place-content-center gap-4  grid-cols-1 '}>
             
@@ -60,7 +60,7 @@ const MeetingsListPage = (props:MeetingsListProps) => {
             
         </div>
         </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
     </>
     );

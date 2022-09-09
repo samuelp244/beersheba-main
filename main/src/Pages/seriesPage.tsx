@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAllPlaylistsData } from '../api/queries'
 // import { getPlaylistItems } from '../api/apiCalls'
-import Footer from '../Components/HomeComponents/Footer'
-import Navbar from '../Components/HomeComponents/Navbar'
+// import Footer from '../Components/HomeComponents/Footer'
+// import Navbar from '../Components/HomeComponents/Navbar'
 import YoutubeEmbed from '../Components/YTComponents/YoutubeEmbed'
 import useMediaQuery from '../Hooks/useMediaQuery'
 import { mongoPlaylistdata } from '../types/apiResponseTypes'
@@ -54,8 +54,8 @@ const SeriesPage = () => {
 
   const Sm = useMediaQuery("(max-width: 550px)")
   return (
-    <div className='grid grid-cols-1 gap-4'>
-      <Navbar />
+    <div className='grid grid-cols-1 gap-4 py-4'>
+      {/* <Navbar /> */}
       <main className={Sm?'w-full':'container w-full lg:max-w-6xl md:max-w-4xl mx-auto'}>
           <div className='grid gap-4 md:grid-cols-3 lg:grid-cols-7'>
               <div className={Sm?' container md:col-span-3 lg:col-span-7':'md:col-span-3 lg:col-span-7'}>
@@ -88,7 +88,7 @@ const SeriesPage = () => {
               </div>
           </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

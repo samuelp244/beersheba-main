@@ -34,7 +34,7 @@ export default function Footer(){
                     <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                       <h6 className="text-uppercase mb-4 font-weight-bold">About us</h6>
                       <p>
-                        <Link className="" to="/Shorthistory">A Short History</Link>
+                        <Link className="" to="/about">A Short History</Link>
                       </p>
                       <p>
                         <Link className="" to="oursociety">Our Society</Link>
